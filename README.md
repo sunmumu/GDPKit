@@ -11,7 +11,7 @@ ios项目开发常用方法,整理和封装,例如YYKit框架.
 ## 调用方法
 大部分是类方法, 方便直接调用
 
-###例
+### 例
 ```
 NSString *version = [NSString appVersion];
 ```
