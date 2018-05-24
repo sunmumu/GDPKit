@@ -17,6 +17,7 @@
 		FE5088E120B66EF6002E5159 /* NSData+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DD20B66EF6002E5159 /* NSData+GDP.m */; };
 		FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */; };
 		FE5088E320B66EF6002E5159 /* UIViewController+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */; };
+		FE5088E720B68B16002E5159 /* hua.png in Resources */ = {isa = PBXBuildFile; fileRef = FE5088E620B68B16002E5159 /* hua.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		FE5088DD20B66EF6002E5159 /* NSData+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GDP.m"; sourceTree = "<group>"; };
 		FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GDP.m"; sourceTree = "<group>"; };
 		FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GDP.m"; sourceTree = "<group>"; };
+		FE5088E620B68B16002E5159 /* hua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hua.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				FE5088C120B66D44002E5159 /* AppDelegate.m */,
 				FE5088C320B66D44002E5159 /* ViewController.h */,
 				FE5088C420B66D44002E5159 /* ViewController.m */,
+				FE5088E620B68B16002E5159 /* hua.png */,
 				FE5088C620B66D44002E5159 /* Main.storyboard */,
 				FE5088C920B66D46002E5159 /* Assets.xcassets */,
 				FE5088CB20B66D46002E5159 /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE5088E720B68B16002E5159 /* hua.png in Resources */,
 				FE5088CD20B66D46002E5159 /* LaunchScreen.storyboard in Resources */,
 				FE5088CA20B66D46002E5159 /* Assets.xcassets in Resources */,
 				FE5088C820B66D44002E5159 /* Main.storyboard in Resources */,
