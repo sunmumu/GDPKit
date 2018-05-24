@@ -13,6 +13,10 @@
 		FE5088CA20B66D46002E5159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5088C920B66D46002E5159 /* Assets.xcassets */; };
 		FE5088CD20B66D46002E5159 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5088CB20B66D46002E5159 /* LaunchScreen.storyboard */; };
 		FE5088D020B66D46002E5159 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088CF20B66D46002E5159 /* main.m */; };
+		FE5088E020B66EF6002E5159 /* NSString+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088D720B66EF6002E5159 /* NSString+GDP.m */; };
+		FE5088E120B66EF6002E5159 /* NSData+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DD20B66EF6002E5159 /* NSData+GDP.m */; };
+		FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */; };
+		FE5088E320B66EF6002E5159 /* UIViewController+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,15 @@
 		FE5088CC20B66D46002E5159 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE5088CE20B66D46002E5159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE5088CF20B66D46002E5159 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FE5088D720B66EF6002E5159 /* NSString+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GDP.m"; sourceTree = "<group>"; };
+		FE5088D820B66EF6002E5159 /* NSData+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GDP.h"; sourceTree = "<group>"; };
+		FE5088D920B66EF6002E5159 /* UIViewController+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+GDP.h"; sourceTree = "<group>"; };
+		FE5088DA20B66EF6002E5159 /* UIImage+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GDP.h"; sourceTree = "<group>"; };
+		FE5088DB20B66EF6002E5159 /* GDPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPKit.h; sourceTree = "<group>"; };
+		FE5088DC20B66EF6002E5159 /* NSString+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GDP.h"; sourceTree = "<group>"; };
+		FE5088DD20B66EF6002E5159 /* NSData+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GDP.m"; sourceTree = "<group>"; };
+		FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GDP.m"; sourceTree = "<group>"; };
+		FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GDP.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 		FE5088BF20B66D44002E5159 /* GDPKit */ = {
 			isa = PBXGroup;
 			children = (
+				FE5088D620B66EF6002E5159 /* GDPKit */,
 				FE5088C020B66D44002E5159 /* AppDelegate.h */,
 				FE5088C120B66D44002E5159 /* AppDelegate.m */,
 				FE5088C320B66D44002E5159 /* ViewController.h */,
@@ -67,6 +81,22 @@
 				FE5088CB20B66D46002E5159 /* LaunchScreen.storyboard */,
 				FE5088CE20B66D46002E5159 /* Info.plist */,
 				FE5088CF20B66D46002E5159 /* main.m */,
+			);
+			path = GDPKit;
+			sourceTree = "<group>";
+		};
+		FE5088D620B66EF6002E5159 /* GDPKit */ = {
+			isa = PBXGroup;
+			children = (
+				FE5088D720B66EF6002E5159 /* NSString+GDP.m */,
+				FE5088D820B66EF6002E5159 /* NSData+GDP.h */,
+				FE5088D920B66EF6002E5159 /* UIViewController+GDP.h */,
+				FE5088DA20B66EF6002E5159 /* UIImage+GDP.h */,
+				FE5088DB20B66EF6002E5159 /* GDPKit.h */,
+				FE5088DC20B66EF6002E5159 /* NSString+GDP.h */,
+				FE5088DD20B66EF6002E5159 /* NSData+GDP.m */,
+				FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */,
+				FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */,
 			);
 			path = GDPKit;
 			sourceTree = "<group>";
@@ -141,9 +171,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE5088E120B66EF6002E5159 /* NSData+GDP.m in Sources */,
 				FE5088C520B66D44002E5159 /* ViewController.m in Sources */,
 				FE5088D020B66D46002E5159 /* main.m in Sources */,
+				FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */,
 				FE5088C220B66D44002E5159 /* AppDelegate.m in Sources */,
+				FE5088E320B66EF6002E5159 /* UIViewController+GDP.m in Sources */,
+				FE5088E020B66EF6002E5159 /* NSString+GDP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
