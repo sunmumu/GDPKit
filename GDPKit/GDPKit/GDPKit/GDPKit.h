@@ -8,6 +8,7 @@
 #import <GDPKit.h/NSData+GDP.h>
 #import <GDPKit.h/UIImage+GDP.h>
 #import <GDPKit.h/UIViewController+GDP.h>
+#import <GDPKit.h/UIAlertController+GDP.h>
 
 #else
 
@@ -15,5 +16,6 @@
 #import "NSData+GDP.h"
 #import "UIImage+GDP.h"
 #import "UIViewController+GDP.h"
+#import "UIAlertController+GDP.h"
 
 #endif

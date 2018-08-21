@@ -18,6 +18,7 @@
 		FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */; };
 		FE5088E320B66EF6002E5159 /* UIViewController+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */; };
 		FE5088E720B68B16002E5159 /* hua.png in Resources */ = {isa = PBXBuildFile; fileRef = FE5088E620B68B16002E5159 /* hua.png */; };
+		FE99D5BC212BF2C800BE52AA /* UIAlertController+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE99D5BA212BF2C800BE52AA /* UIAlertController+GDP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GDP.m"; sourceTree = "<group>"; };
 		FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GDP.m"; sourceTree = "<group>"; };
 		FE5088E620B68B16002E5159 /* hua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hua.png; sourceTree = "<group>"; };
+		FE99D5BA212BF2C800BE52AA /* UIAlertController+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+GDP.m"; sourceTree = "<group>"; };
+		FE99D5BB212BF2C800BE52AA /* UIAlertController+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+GDP.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */,
 				FE5088D920B66EF6002E5159 /* UIViewController+GDP.h */,
 				FE5088DF20B66EF6002E5159 /* UIViewController+GDP.m */,
+				FE99D5BB212BF2C800BE52AA /* UIAlertController+GDP.h */,
+				FE99D5BA212BF2C800BE52AA /* UIAlertController+GDP.m */,
 			);
 			path = GDPKit;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			files = (
 				FE5088E120B66EF6002E5159 /* NSData+GDP.m in Sources */,
 				FE5088C520B66D44002E5159 /* ViewController.m in Sources */,
+				FE99D5BC212BF2C800BE52AA /* UIAlertController+GDP.m in Sources */,
 				FE5088D020B66D46002E5159 /* main.m in Sources */,
 				FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */,
 				FE5088C220B66D44002E5159 /* AppDelegate.m in Sources */,
