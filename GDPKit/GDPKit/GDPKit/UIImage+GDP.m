@@ -2,6 +2,11 @@
 
 #import "UIImage+GDP.h"
 
+#define ISSTRINGCLASS(IPHONESTR) [[IPHONESTR class] isSubclassOfClass:[NSString class]] ? YES:NO
+#define ISNILSTRING(IPHONESTR)  (ISSTRINGCLASS(IPHONESTR) == YES) ? ((IPHONESTR == nil || [IPHONESTR isEqualToString:@""]) ? ((IPHONESTR = @""), YES):NO):YES
+#define ISNOTNILSTR(IPHONESTR) (ISNILSTRING(IPHONESTR) == YES) ? NO:YES
+
+
 @implementation UIImage (GDP)
 
 /**
@@ -11,7 +16,7 @@
  @param maxLength 传入压缩到多少kb
  @return 返回maxLength大小内的UIImage
  */
-- (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength {
++ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength {
     // Compress by quality
     CGFloat compression = 1;
     NSData *data = UIImageJPEGRepresentation(image, compression);
@@ -49,6 +54,20 @@
         data = UIImageJPEGRepresentation(resultImage, compression);
     }
     return resultImage;
+}
+
+/**
+ 通过URL获取图片
+ 
+ @param imageUrl 图片URL
+ @return UIImage
+ */
++ (UIImage *)getImage:(NSString *)imageUrl {
+    UIImage *image;
+    if (ISNOTNILSTR(imageUrl)) {
+        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+    }
+    return image;
 }
 
 @end

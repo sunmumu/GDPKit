@@ -12,6 +12,14 @@
  @param maxLength 传入压缩到多少kb
  @return 返回maxLength大小内的UIImage
  */
-- (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
++ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
+
+/**
+ 通过URL获取图片
+ 
+ @param imageUrl 图片URL
+ @return UIImage
+ */
++ (UIImage *)getImage:(NSString *)imageUrl;
 
 @end
