@@ -1,10 +1,7 @@
-
-
 #import "NSString+GDP.h"
 #import <UIKit/UIKit.h>
 
 @implementation NSString (GDP)
-
 
 /**
  获取APP的版本号
@@ -67,6 +64,19 @@
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:self];
+}
+
+//返回字符串所占用的尺寸.
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize
+{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
+- (BOOL)EXcontainString:(NSString *)string
+{
+    NSRange range = [self rangeOfString:string];
+    return range.length > 0 ? YES : NO;
 }
 
 @end
