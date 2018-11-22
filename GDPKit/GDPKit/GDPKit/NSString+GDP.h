@@ -1,7 +1,8 @@
-
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+/* 判定字符串是否为空 */
+#define STRING_ISNIL(__POINTER) (__POINTER == nil || [__POINTER isEqualToString:@""])?YES:NO
 
 @interface NSString (GDP)
 
@@ -34,11 +35,108 @@
 + (BOOL)isPureInt:(NSString*)string;
 
 /**
- 是否为邮箱地址
+ 检查邮箱格式
+ 
+ @param email 邮箱NSString
+ @return 是否正确
+ */
++ (BOOL)checkEmail:(NSString *)email;
+
+/**
+ 检查手机号码是否正确
+ 
+ @param mobileNumber 手机号码字符串
+ @return 手机号码格式是否正确
+ */
++ (BOOL)checkMobileNumber:(NSString *)mobileNumber;
+
+/**
+ 清除首尾空格
+ 
+ @return NSString
+ */
+- (NSString *)clearSpace;
+
+/**
+ 根据字符串计算所使用的宽高
+ 
+ @param limit 所允许的宽高
+ @param font 字体
+ @return 计算之后的宽高
+ */
+- (CGSize)textsizelimit:(CGSize)limit font:(UIFont *)font;
+
+/**
+ 去除小数点后无效字符
+ 
+ @param text 修改的数字
+ @return 修改后的数字
+ */
+- (NSString *)effective:(NSString *)text;
+
+/**
+ 去除小数点后无效字符
+ 
+ @param text text description
+ @return NSString
+ */
++ (NSString *)effective:(NSString *)text;
+
+
+/**
+ 只保留两位小数
+ 
+ @param text text
+ @return NSString
+ */
+- (NSString *)saveTwoDecimal:(NSString *)text;
+
+/**
+ Int 转成 NSString
+ 
+ @param num num
+ @return NSString
+ */
++ (NSString *)stringToInt:(int)num;
+
+/**
+ double 转成 NSString
+ 
+ @param num num
+ @return NSString
+ */
++ (NSString *)stringToDouble:(double)num;
+
+/**
+ NSInteger 转成 NSString
+ 
+ @param num num
+ @return NSString
+ */
++ (NSString *)stringToNSIntger:(NSInteger)num;
+
+/**
+ 格式化时间
+ 
+ @param timestamp 时间戳
+ @return 返回时间格式 yyyy-MM-dd
+ */
++ (NSString *)formattingTimeYMD:(NSInteger) timestamp;
+
+/**
+ 格式化时间
+ 
+ @param timestamp 时间戳
+ @return NSString
+ */
++ (NSString *)formattingTimeYMDSHM:(NSInteger) timestamp;
+
+/**
+ 判断是否为中文
  
  @return BOOL
  */
-- (BOOL)isEmailAddress;
+- (BOOL)isChinese;
 
 /**
  *返回值是该字符串所占的大小(width, height)

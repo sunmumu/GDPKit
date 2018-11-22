@@ -22,4 +22,13 @@
  */
 + (UIImage *)getImage:(NSString *)imageUrl;
 
+
+/**
+ 通过颜色 创建图片
+
+ @param color
+ @return 
+ */
++ (UIImage *)imageWithColor:(UIColor *)color;
+
 @end
