@@ -35,8 +35,8 @@
 /**
  未转成UTF8格式的json 转成NSString
  
- @param hexString 十六进制的字符串
- @return 十进制 NSInteger
+ @param dic NSDictionary
+ @return NSString
  */
 + (NSString *)dictionaryToJson:(NSDictionary *)dic {
     if (!dic) {
