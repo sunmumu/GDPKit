@@ -10,10 +10,9 @@
 
 @implementation UILabel (GDP)
 
+
 /**
  文本置顶
- 
- @return nil
  */
 - (void)alignTop {
     if ([self.text isKindOfClass:[NSNull class]])
@@ -31,8 +30,8 @@
 
 /**
  添加行间距
- 
- @return nil
+
+ @param spa 间距
  */
 - (void) addLabelSpasing:(CGFloat)spa {
     if ([self.text isKindOfClass:[NSNull class]] || !self.text)

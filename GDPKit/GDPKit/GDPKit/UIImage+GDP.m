@@ -2,9 +2,9 @@
 
 #import "UIImage+GDP.h"
 
-#define ISSTRINGCLASS(IPHONESTR) [[IPHONESTR class] isSubclassOfClass:[NSString class]] ? YES:NO
-#define ISNILSTRING(IPHONESTR)  (ISSTRINGCLASS(IPHONESTR) == YES) ? ((IPHONESTR == nil || [IPHONESTR isEqualToString:@""]) ? ((IPHONESTR = @""), YES):NO):YES
-#define ISNOTNILSTR(IPHONESTR) (ISNILSTRING(IPHONESTR) == YES) ? NO:YES
+#define CHECK_CLASS_NSSTRING(IPHONESTR) [[IPHONESTR class] isSubclassOfClass:[NSString class]] ? YES:NO
+#define CHECK_NOT_NSSTRING_OR_EMPTY_NSSTRING(IPHONESTR)  (CHECK_CLASS_NSSTRING(IPHONESTR) == YES) ? ((IPHONESTR == nil || [IPHONESTR isEqualToString:@""]) ? ((IPHONESTR = @""), YES):NO):YES
+#define CHECK_NOT_EMPTY_NSSTRING(IPHONESTR) (CHECK_NOT_NSSTRING_OR_EMPTY_NSSTRING(IPHONESTR) == YES) ? NO:YES
 
 
 @implementation UIImage (GDP)
@@ -64,14 +64,20 @@
  */
 + (UIImage *)getImage:(NSString *)imageUrl {
     UIImage *image;
-    if (ISNOTNILSTR(imageUrl)) {
+    if (CHECK_NOT_EMPTY_NSSTRING(imageUrl)) {
         image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
     }
     return image;
 }
 
+/**
+ 通过颜色 创建图片
+ 
+ @param color
+ @return
+ */
 + (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f); //宽高 1.0只要有值就够了
+    CGRect rect = CGRectMake(0, 0, 10, 10); //宽高 1.0只要有值就够了
     UIGraphicsBeginImageContext(rect.size); //在这个范围内开启一段上下文
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -83,5 +89,6 @@
     
     return image;
 }
+
 
 @end

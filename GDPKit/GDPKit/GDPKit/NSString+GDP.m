@@ -34,7 +34,7 @@
 
 /**
  未转成UTF8格式的json 转成NSString
- 
+
  @param dic NSDictionary
  @return NSString
  */
@@ -78,7 +78,7 @@
     if (![mobileNumber isKindOfClass:[NSString class]]) {
         return NO;
     }
-    if (STRING_ISNIL(mobileNumber)) {
+    if (CHECK_EMPTY_NSSTRING(mobileNumber)) {
         return NO;
     }
     if ([mobileNumber hasPrefix:@"86"]) {

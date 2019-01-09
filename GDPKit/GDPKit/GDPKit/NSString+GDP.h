@@ -2,7 +2,7 @@
 #import <UIKit/UIKit.h>
 
 /* 判定字符串是否为空 */
-#define STRING_ISNIL(__POINTER) (__POINTER == nil || [__POINTER isEqualToString:@""])?YES:NO
+#define CHECK_EMPTY_NSSTRING(string) (string == nil || [string isEqualToString:@""] || [string isEqualToString:@"NO"] || [string isEqualToString:@"(null)"]) ? YES : NO
 
 @interface NSString (GDP)
 
@@ -36,7 +36,7 @@
 
 /**
  检查邮箱格式
- 
+
  @param email 邮箱NSString
  @return 是否正确
  */
@@ -44,7 +44,7 @@
 
 /**
  检查手机号码是否正确
- 
+
  @param mobileNumber 手机号码字符串
  @return 手机号码格式是否正确
  */
@@ -52,7 +52,7 @@
 
 /**
  清除首尾空格
- 
+
  @return NSString
  */
 - (NSString *)clearSpace;
@@ -76,7 +76,7 @@
 
 /**
  去除小数点后无效字符
- 
+
  @param text text description
  @return NSString
  */
@@ -85,7 +85,7 @@
 
 /**
  只保留两位小数
- 
+
  @param text text
  @return NSString
  */
@@ -93,7 +93,7 @@
 
 /**
  Int 转成 NSString
- 
+
  @param num num
  @return NSString
  */
@@ -101,7 +101,7 @@
 
 /**
  double 转成 NSString
- 
+
  @param num num
  @return NSString
  */
@@ -109,7 +109,7 @@
 
 /**
  NSInteger 转成 NSString
- 
+
  @param num num
  @return NSString
  */
@@ -125,7 +125,7 @@
 
 /**
  格式化时间
- 
+
  @param timestamp 时间戳
  @return NSString
  */
@@ -133,7 +133,7 @@
 
 /**
  判断是否为中文
- 
+
  @return BOOL
  */
 - (BOOL)isChinese;
