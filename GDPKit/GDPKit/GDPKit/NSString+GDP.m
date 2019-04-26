@@ -282,4 +282,59 @@
     return range.length > 0 ? YES : NO;
 }
 
+/**
+ * 判断字符串是否包含空格
+ */
++ (BOOL)isBlank:(NSString *)str {
+    NSRange _range = [str rangeOfString:@" "];
+    if (_range.location != NSNotFound) {
+        //有空格
+        return YES;
+    }else {
+        //没有空格
+        return NO;
+    }
+}
+
+/**
+ 检查邮箱格式是否正确
+ 
+ @param emailAddress 邮箱字符串
+ @return 邮箱格式是否正确
+ */
++ (BOOL)isEmail:(NSString *)emailAddress {
+    NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [emailTest evaluateWithObject:emailAddress];
+}
+
+/**
+ 获取某个字符串或者汉字的首字母.
+
+ @param string 字符串或者汉字
+ @return 首字母
+ */
++ (NSString *)firstCharactorWithString:(NSString *)string {
+    NSMutableString *str = [NSMutableString stringWithString:string];
+    CFStringTransform((CFMutableStringRef) str, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformStripDiacritics, NO);
+    NSString *pinYin = [str capitalizedString];
+    if (pinYin.length == 0) {
+        return @"#";
+    }
+    unichar c = [pinYin characterAtIndex:0];
+    if (c <'A'|| c >'Z') {
+        return @"#";
+    }
+    NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if ([[pinYin substringToIndex:1] rangeOfCharacterFromSet:notDigits].location == NSNotFound){
+        // 是数字
+        return @"#";
+    }
+    if ([[pinYin substringToIndex:1] isEqual:@"_"]) {
+        return @"#";
+    }
+    return [pinYin substringToIndex:1];
+}
+
 @end

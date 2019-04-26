@@ -147,4 +147,17 @@
 
 - (BOOL)EXcontainString:(NSString *)string;
 
+/**
+ * 判断字符串是否包含空格
+ */
++ (BOOL)isBlank:(NSString *)str;
+
+/**
+ 检查邮箱格式是否正确
+ */
++ (BOOL)isEmail:(NSString *)emailAddress;
+
+//获取某个字符串或者汉字的首字母.
++ (NSString *)firstCharactorWithString:(NSString *)string;
+
 @end

@@ -68,7 +68,7 @@
 }
 
 /**
- 修改字体颜色 字体大小 范围
+ 添加下划线 修改字体颜色 范围
  
  @param color color
  @param fontSize fontSize description
@@ -84,7 +84,7 @@
 }
 
 /**
- 添加下划线
+ 修改字体颜色 字体大小
  
  @param color color description
  @param range range description

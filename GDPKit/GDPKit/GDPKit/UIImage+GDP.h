@@ -25,9 +25,19 @@
 /**
  通过颜色 创建图片
  
- @param color
- @return
+ @param color UIImage
+ @return UIImage
  */
 + (UIImage *)imageWithColor:(UIColor *)color;
+
+
+/**
+ 通过字符串 绘制通讯录的头像
+
+ @param string 字符串
+ @param size 图片大小
+ @return 图片
+ */
++ (UIImage *)acquireImageWithString:(NSString *)string imageSize:(CGSize)size hexString:(NSString *)hexColor;
 
 @end
