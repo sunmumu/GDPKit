@@ -5,14 +5,14 @@
 #if __has_include(<GDPKit/GDPKit.h>)
 
 #import <GDPKit/NSString+GDP.h>
-#import <GDPKit.h/NSData+GDP.h>
-#import <GDPKit.h/NSDate+GDP.h>
-#import <GDPKit.h/UIImage+GDP.h>
-#import <GDPKit.h/UILabel+GDP.h>
-#import <GDPKit.h/UIView+GDP.h>
-#import <GDPKit.h/UIViewController+GDP.h>
-#import <GDPKit.h/UIAlertController+GDP.h>
-#import <GDPKit.h/GDPFileManager.h>
+#import <GDPKit/NSData+GDP.h>
+#import <GDPKit/NSDate+GDP.h>
+#import <GDPKit/UIImage+GDP.h>
+#import <GDPKit/UILabel+GDP.h>
+#import <GDPKit/UIView+GDP.h>
+#import <GDPKit/UIViewController+GDP.h>
+#import <GDPKit/UIAlertController+GDP.h>
+#import <GDPKit/GDPFileManager.h>
 
 #else
 
