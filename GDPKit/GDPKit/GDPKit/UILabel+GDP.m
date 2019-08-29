@@ -10,6 +10,31 @@
 
 @implementation UILabel (GDP)
 
+/**
+ 字体加粗
+ 
+ @param size 加粗大小
+ */
+- (void)addBoldWithSize:(NSInteger)size {
+    [self setFont:[UIFont fontWithName:@"Helvetica-Bold" size:size]];
+}
+
+- (void)addBoldWithSize:(NSInteger)size range:(NSRange)range {
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:size];
+    NSString *string = self.text;
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
+    [attrString addAttribute:NSFontAttributeName value:boldFont range:range];//设置Text这四个字母的字体为粗体
+    self.attributedText = attrString;
+}
+
+/**
+ 字体加粗和倾斜
+ 
+ @param size 加粗大小
+ */
+- (void)addBoldAndObliqueWithSize:(NSInteger)size {
+    [self setFont:[UIFont fontWithName:@"Helvetica-BoldOblique" size:size]];
+}
 
 /**
  文本置顶
@@ -25,6 +50,24 @@
             str = [str stringByAppendingString:@"\n "];
         }
         self.text = str;
+    }
+}
+
+/**
+ 文本置底
+ */
+- (void)alignBottom {
+    CGSize fontSize = [self.text sizeWithFont:self.font];
+    
+    double finalHeight = fontSize.height * self.numberOfLines;
+    double finalWidth = self.frame.size.width;    //expected width of label
+    
+    CGSize theStringSize = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(finalWidth, finalHeight) lineBreakMode:self.lineBreakMode];
+    
+    int newLinesToPad = (finalHeight  - theStringSize.height) / fontSize.height;
+    
+    for(int i=0; i< newLinesToPad; i++) {
+        self.text = [NSString stringWithFormat:@" \n%@",self.text];
     }
 }
 

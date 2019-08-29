@@ -7,7 +7,7 @@
 /**
  获取APP的版本号
  
- @return APP版本号 例 v1.01
+ @return APP版本号 例 1.01
  */
 + (NSString *)appVersion {
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
@@ -15,7 +15,7 @@
     if (appVersion.length < 5) {
         return @"";
     }
-    NSString *appVersionString = [NSString stringWithFormat:@"v%@", appVersion];
+    NSString *appVersionString = [NSString stringWithFormat:@"%@", appVersion];
     return appVersionString;
 }
 
@@ -270,10 +270,15 @@
 }
 
 //返回字符串所占用的尺寸.
-- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize
-{
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize {
     NSDictionary *attrs = @{NSFontAttributeName : font};
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
+- (CGSize)sizeWithSystemFont:(UIFont *)font maxWidth:(CGFloat)maxWidth {
+    CGSize maxSize = CGSizeMake(maxWidth, CGFLOAT_MAX);
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return [self boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrs context:nil].size;
 }
 
 - (BOOL)EXcontainString:(NSString *)string
@@ -335,6 +340,44 @@
         return @"#";
     }
     return [pinYin substringToIndex:1];
+}
+
+/**
+ 时间转时间戳
+
+ @param date 日期
+ @return 时间戳字符串
+ */
++ (NSString *)dateConversionTimeStamp:(NSDate *)date {
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[date timeIntervalSince1970]*1000];
+    return timeSp;
+}
+
+/**
+ 获取字典有序value数组
+ 对传入的字典key进行ASCII排序，然后拼接key和value成字符串
+ @param dict NSDictionary
+ @return NSArray
+ */
++ (NSString *)orderValueStringWithDictionary:(NSDictionary *)dict {
+    NSString *string = @"";
+    
+    //取出字典所有key
+    NSArray *keyArray = [dict allKeys];
+    
+    //将key排序
+    NSArray *sortedArray = [keyArray sortedArrayUsingComparator:^NSComparisonResult(id obj1,id obj2) {
+        return[obj1 compare:obj2 options:NSNumericSearch];//正序
+    }];
+    
+    //根据key的顺序提取相应value
+    for (NSString *key in sortedArray) {
+        string = [NSString stringWithFormat:@"%@%@",string, key];
+        string = [NSString stringWithFormat:@"%@=%@&",string,(NSString *)[dict objectForKey:key]];
+//        [string stringByAppendingString:[NSString stringWithFormat:@"=%@&",(NSString *)[dict objectForKey:key]]];
+    }
+    string = [string substringWithRange:NSMakeRange(0, (string.length - 1))];
+    return string;
 }
 
 @end

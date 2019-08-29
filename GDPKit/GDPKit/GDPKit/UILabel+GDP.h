@@ -11,16 +11,42 @@
 @interface UILabel (GDP)
 
 /**
- 文本置顶
+ 字体加粗
 
- @return nil
+ @param size 加粗大小
+ */
+- (void)addBoldWithSize:(NSInteger)size;
+
+
+/**
+ 指定range 字体加粗
+
+ @param size 加粗大小
+ @param range 指定范围文本
+ */
+- (void)addBoldWithSize:(NSInteger)size range:(NSRange)range;
+
+/**
+ 字体加粗和倾斜
+
+ @param size 加粗大小
+ */
+- (void)addBoldAndObliqueWithSize:(NSInteger)size;
+
+/**
+ 文本置顶
  */
 - (void)alignTop;
 
 /**
+ 文本置底
+ */
+- (void)alignBottom;
+
+/**
  添加行间距
 
- @return nil
+ @param spa spa
  */
 - (void)addLabelSpasing:(CGFloat)spa;
 

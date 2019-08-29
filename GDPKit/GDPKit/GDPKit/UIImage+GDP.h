@@ -14,6 +14,27 @@
  */
 + (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
 
+- (NSData *)compressWithMaxLength:(NSUInteger)maxLength;
+
+/**
+ 压缩图片(UIImage)到指定大小
+ 
+ @param image 传入UIImage
+ @param maxLength 传入压缩到多少kb
+ @return 返回maxLength大小内的UIImage
+ */
++ (UIImage *)compressImage:(UIImage *)image MaxLength:(NSUInteger)maxLength;
+
+/**
+ 通过颜色 创建图片
+
+ @param color color
+ @param size size
+ @param radius radius
+ @return UIImage
+ */
++ (UIImage *)imageColor:(UIColor *)color size:(CGSize)size cornerRadius:(CGFloat)radius;
+
 /**
  通过URL获取图片
  

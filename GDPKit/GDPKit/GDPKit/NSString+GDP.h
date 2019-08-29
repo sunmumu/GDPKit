@@ -67,6 +67,22 @@
 - (CGSize)textsizelimit:(CGSize)limit font:(UIFont *)font;
 
 /**
+ *返回值是该字符串所占的大小(width, height)
+ *font : 该字符串所用的字体(字体大小不一样,显示出来的面积也不同)
+ *maxSize : 为限制改字体的最大宽和高(如果显示一行,则宽高都设置为MAXFLOAT, 如果显示为多行,只需将宽设置一个有限定长值,高设置为MAXFLOAT)
+ */
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
+
+/**
+ 根据字符串计算所使用的宽高
+ 
+ @param font 该字符串所用的字体(字体大小不一样,显示出来的面积也不同)
+ @param maxWidth 为限制改字体的最大宽和高(如果显示一行,则宽高都设置为MAXFLOAT, 如果显示为多行,只需将宽设置一个有限定长值,高设置为MAXFLOAT)
+ @return 返回值是该字符串所占的大小(width, height)
+ */
+- (CGSize)sizeWithSystemFont:(UIFont *)font maxWidth:(CGFloat)maxWidth;
+
+/**
  去除小数点后无效字符
  
  @param text 修改的数字
@@ -81,7 +97,6 @@
  @return NSString
  */
 + (NSString *)effective:(NSString *)text;
-
 
 /**
  只保留两位小数
@@ -138,13 +153,6 @@
  */
 - (BOOL)isChinese;
 
-/**
- *返回值是该字符串所占的大小(width, height)
- *font : 该字符串所用的字体(字体大小不一样,显示出来的面积也不同)
- *maxSize : 为限制改字体的最大宽和高(如果显示一行,则宽高都设置为MAXFLOAT, 如果显示为多行,只需将宽设置一个有限定长值,高设置为MAXFLOAT)
- */
-- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
-
 - (BOOL)EXcontainString:(NSString *)string;
 
 /**
@@ -157,7 +165,28 @@
  */
 + (BOOL)isEmail:(NSString *)emailAddress;
 
-//获取某个字符串或者汉字的首字母.
+/**
+ 获取某个字符串或者汉字的首字母.
+ 
+ @param string 字符串或者汉字
+ @return 首字母
+ */
 + (NSString *)firstCharactorWithString:(NSString *)string;
+
+/**
+ 时间转时间戳
+ 
+ @param date 日期
+ @return 时间戳字符串
+ */
++ (NSString *)dateConversionTimeStamp:(NSDate *)date;
+
+/**
+ 获取字典有序value数组
+ 对传入的字典key进行ASCII排序，然后拼接key和value成字符串
+ @param dict NSDictionary
+ @return NSArray
+ */
++ (NSString *)orderValueStringWithDictionary:(NSDictionary *)dict;
 
 @end

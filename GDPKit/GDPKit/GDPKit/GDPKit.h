@@ -13,6 +13,8 @@
 #import <GDPKit/UIViewController+GDP.h>
 #import <GDPKit/UIAlertController+GDP.h>
 #import <GDPKit/GDPFileManager.h>
+#import <GDPKit/UITextField+GDP.h>
+//#import <GDPKit/UINavigationController+GDP.h>
 
 #else
 
@@ -22,8 +24,15 @@
 #import "UIImage+GDP.h"
 #import "UILabel+GDP.h"
 #import "UIView+GDP.h"
+#import "UITextField+GDP.h"
 #import "UIViewController+GDP.h"
 #import "UIAlertController+GDP.h"
 #import "GDPFileManager.h"
+//#import "UINavigationController+GDP.h"
+
+//特殊说明
+//UIView+ScrollToTop.h用法 :
+//拖UIView+ScrollToTop.h / UIView+ScrollToTop.m文件到项目中, 不需要导入头文件.
+//需要点击状态栏, 需要对应UIScrollView回滚最上面, 设置对应 scrollView.scrollsToTop = YES;
 
 #endif
