@@ -59,6 +59,15 @@
  @param size 图片大小
  @return 图片
  */
-+ (UIImage *)acquireImageWithString:(NSString *)string imageSize:(CGSize)size hexString:(NSString *)hexColor;
++ (UIImage *)acquireImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor;
+
+/**
+ 通过字符串 绘制图片个数角标的图片
+ 
+ @param string 字符串
+ @param size 图片大小
+ @return 图片
+ */
++ (UIImage *)badgeImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor;
 
 @end

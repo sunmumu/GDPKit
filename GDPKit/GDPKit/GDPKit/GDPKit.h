@@ -10,10 +10,12 @@
 #import <GDPKit/UIImage+GDP.h>
 #import <GDPKit/UILabel+GDP.h>
 #import <GDPKit/UIView+GDP.h>
+#import <GDPKit/UITabBar+GDP.h>
 #import <GDPKit/UIViewController+GDP.h>
 #import <GDPKit/UIAlertController+GDP.h>
 #import <GDPKit/GDPFileManager.h>
 #import <GDPKit/UITextField+GDP.h>
+#import <GDPKit/UITextField+NumberFormat.h>
 //#import <GDPKit/UINavigationController+GDP.h>
 
 #else
@@ -24,10 +26,12 @@
 #import "UIImage+GDP.h"
 #import "UILabel+GDP.h"
 #import "UIView+GDP.h"
+#import "UITabBar+GDP.h"
 #import "UITextField+GDP.h"
 #import "UIViewController+GDP.h"
 #import "UIAlertController+GDP.h"
 #import "GDPFileManager.h"
+#import "UITextField+NumberFormat.h"
 //#import "UINavigationController+GDP.h"
 
 //特殊说明

@@ -85,8 +85,8 @@
         NSMutableString *phoneStr = [[NSMutableString alloc]initWithFormat:@"%@",mobileNumber];
         mobileNumber = [phoneStr substringFromIndex:2];
     }
-    //手机号以13,14,15,16,17,18开头，八个 \d 数字字符
-    NSString *phoneRegex = @"^((13[0-9])|(14[0-9])|(15[^4,\\D])|(16[0-9])|(17[678])|(18[0,0-9]))\\d{8}$";
+    //手机号以13,14,15,16,17,18,198,199开头，八个 \d 数字字符
+    NSString *phoneRegex = @"^((19[89])|(13[0-9])|(14[0-9])|(15[^4,\\D])|(16[0-9])|(17[0-9])|(18[0,0-9]))\\d{8}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     return [phoneTest evaluateWithObject:mobileNumber];
 }
@@ -281,8 +281,7 @@
     return [self boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrs context:nil].size;
 }
 
-- (BOOL)EXcontainString:(NSString *)string
-{
+- (BOOL)EXcontainString:(NSString *)string {
     NSRange range = [self rangeOfString:string];
     return range.length > 0 ? YES : NO;
 }

@@ -166,30 +166,45 @@
 }
 
 /**
+ 通过字符串 绘制图片个数 角标的图片
+ 
+ @param string 字符串
+ @param size 图片大小
+ @return 图片
+ */
++ (UIImage *)badgeImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
+    if (string.length < 1 || [string integerValue] == 1) {
+        return [UIImage new];
+    }
+    NSString *firstString = [string substringWithRange:NSMakeRange(0, 1)];
+    return [UIImage createImageWithString:firstString font:font imageSize:size hexString:hexColor];
+}
+
+/**
  通过字符串 绘制通讯录的头像
  
  @param string 字符串
  @param size 图片大小
  @return 图片
  */
-+ (UIImage *)acquireImageWithString:(NSString *)string imageSize:(CGSize)size hexString:(NSString *)hexColor {
++ (UIImage *)acquireImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
     NSString *firstString = [NSString firstCharactorWithString:string];
-    return [UIImage createImageWithString:firstString imageSize:size hexString:hexColor];
+    return [UIImage createImageWithString:firstString font:font imageSize:size hexString:hexColor];
 }
 
 // 根据nikeName绘制图片
-+ (UIImage *)createImageWithString:(NSString *)name imageSize:(CGSize)size hexString:(NSString*)hexColor {
-    UIImage *image = [UIImage imageColor:[UIImage colorWithHexString:hexColor alpha:1.0] size:size cornerRadius:size.width / 2];
++ (UIImage *)createImageWithString:(NSString *)name font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString*)hexColor {
+    UIImage *image = [UIImage imageColor:[UIImage colorWithHexString:hexColor alpha:0.5] size:size cornerRadius:size.width / 2];
     UIGraphicsBeginImageContextWithOptions (size, NO , 0.0 );
     [image drawAtPoint : CGPointMake ( 0 , 0 )];
     
     // 获得一个位图图形上下文
     CGContextRef context= UIGraphicsGetCurrentContext ();
-    CGContextDrawPath (context, kCGPathStroke );
+    CGContextDrawPath (context, kCGPathStroke);
     
     // 画名字
-    CGSize nameSize = [name sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:24]}];
-    [name drawAtPoint : CGPointMake ( (size.width  - nameSize.width) / 2 , (size.height  - nameSize.height) / 2 ) withAttributes : @{NSFontAttributeName : [UIFont systemFontOfSize:24], NSForegroundColorAttributeName :HEXCOLOR(0Xffffff)} ];
+    CGSize nameSize = [name sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:font]}];
+    [name drawAtPoint : CGPointMake ( (size.width  - nameSize.width) / 2 , (size.height  - nameSize.height) / 2 ) withAttributes : @{NSFontAttributeName : [UIFont systemFontOfSize:font], NSForegroundColorAttributeName :HEXCOLOR(0Xffffff)} ];
     
     // 返回绘制的新图形
     UIImage *newImage= UIGraphicsGetImageFromCurrentImageContext ();
