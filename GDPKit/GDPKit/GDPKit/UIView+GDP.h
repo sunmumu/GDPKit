@@ -21,4 +21,13 @@
  */
 @property (nonatomic, copy) NSString *timeId;
 
+/// UIView 添加边框线
+/// @param hasTopBorder 顶部边框
+/// @param hasLeftBorder 左边边框
+/// @param hasBottomBorder 底部边框
+/// @param hasRightBorder 右边边框
+/// @param borderColor 边框颜色
+/// @param borderWidth 边框宽度
+- (void)addBorderLineWithTop:(BOOL)hasTopBorder left:(BOOL)hasLeftBorder bottom:(BOOL)hasBottomBorder right:(BOOL)hasRightBorder borderColor:(UIColor *)borderColor withBorderWidth:(CGFloat)borderWidth;
+
 @end

@@ -281,4 +281,42 @@
     self.layer.mask = maskLayer;
 }
 
+/// UIView 添加边框线
+/// @param hasTopBorder 顶部边框
+/// @param hasLeftBorder 左边边框
+/// @param hasBottomBorder 底部边框
+/// @param hasRightBorder 右边边框
+/// @param borderColor 边框颜色
+/// @param borderWidth 边框宽度
+- (void)addBorderLineWithTop:(BOOL)hasTopBorder left:(BOOL)hasLeftBorder bottom:(BOOL)hasBottomBorder right:(BOOL)hasRightBorder borderColor:(UIColor *)borderColor withBorderWidth:(CGFloat)borderWidth {
+    
+    float height = self.frame.size.height;
+    float width = self.frame.size.width;
+    CALayer *topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0, 0, width, borderWidth);
+    topBorder.backgroundColor = borderColor.CGColor;
+    CALayer *leftBorder = [CALayer layer];
+    leftBorder.frame = CGRectMake(0, 0, 1, height);
+    leftBorder.backgroundColor = borderColor.CGColor;
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0, height, width, borderWidth);
+    bottomBorder.backgroundColor = borderColor.CGColor;
+    CALayer *rightBorder = [CALayer layer];
+    rightBorder.frame = CGRectMake(width, 0, borderWidth, height);
+    rightBorder.backgroundColor = borderColor.CGColor;
+    
+    if (hasTopBorder) {
+        [self.layer addSublayer:topBorder];
+    }
+    if (hasLeftBorder) {
+        [self.layer addSublayer:leftBorder];
+    }
+    if (hasBottomBorder) {
+        [self.layer addSublayer:bottomBorder];
+    }
+    if (hasRightBorder) {
+        [self.layer addSublayer:rightBorder];
+    }
+}
+
 @end

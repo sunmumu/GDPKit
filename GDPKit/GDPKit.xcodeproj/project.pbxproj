@@ -52,7 +52,6 @@
 		657CE27D23A2112C00D6C332 /* NSDate+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+GDP.h"; sourceTree = "<group>"; };
 		657CE27E23A2112C00D6C332 /* UIView+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GDP.m"; sourceTree = "<group>"; };
 		657CE27F23A2112C00D6C332 /* UIView+ScrollToTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ScrollToTop.h"; sourceTree = "<group>"; };
-		657CE28A23A2123C00D6C332 /* GDPConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPConstant.h; sourceTree = "<group>"; };
 		FE5088BD20B66D44002E5159 /* GDPKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDPKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5088C020B66D44002E5159 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE5088C120B66D44002E5159 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				FE5088DB20B66EF6002E5159 /* GDPKit.h */,
-				657CE28A23A2123C00D6C332 /* GDPConstant.h */,
 				657CE27D23A2112C00D6C332 /* NSDate+GDP.h */,
 				657CE26E23A2112B00D6C332 /* NSDate+GDP.m */,
 				657CE27523A2112C00D6C332 /* UILabel+GDP.h */,

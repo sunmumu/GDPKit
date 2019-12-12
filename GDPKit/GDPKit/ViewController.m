@@ -19,6 +19,8 @@
     
     NSString *version = [NSString appVersion];
     NSLog(@"app的版本号是%@", version);
+    
+    [imageView addBorderLineWithTop:NO left:NO bottom:YES right:NO borderColor:[UIColor blueColor] withBorderWidth:10];
 }
 
 - (void)didReceiveMemoryWarning {
