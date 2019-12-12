@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^VoidBlock)(void);
+typedef void (^StringBlock)(NSString *result);
 
 @interface UIAlertController (GDP)
 

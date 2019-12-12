@@ -1,6 +1,7 @@
 //  Created by sunmumu
 
 #import <UIKit/UIKit.h>
+#import "NSString+GDP.h"
 
 @interface UIImage (GDP)
 

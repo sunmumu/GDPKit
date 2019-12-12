@@ -5,6 +5,17 @@
 typedef void (^VoidBlock)(void);
 typedef void (^StringBlock)(NSString *result);
 
+// MARK: - LOG打印
+// 调试状态
+#ifdef DEBUG
+// 打开LOG功能
+#define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#else
+// 发布状态
+// 关闭LOG功能
+#define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#endif
+
 @interface UIViewController (GDP)
 
 /**
