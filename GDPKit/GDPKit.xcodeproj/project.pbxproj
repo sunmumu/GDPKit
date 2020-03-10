@@ -12,7 +12,6 @@
 		657CE28223A2112D00D6C332 /* NSDate+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE26E23A2112B00D6C332 /* NSDate+GDP.m */; };
 		657CE28323A2112D00D6C332 /* UILabel+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE26F23A2112B00D6C332 /* UILabel+GDP.m */; };
 		657CE28423A2112D00D6C332 /* UITabBar+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27423A2112C00D6C332 /* UITabBar+GDP.m */; };
-		657CE28523A2112D00D6C332 /* UIViewController+ZBCustomBackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27623A2112C00D6C332 /* UIViewController+ZBCustomBackItem.m */; };
 		657CE28623A2112D00D6C332 /* UINavigationController+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27823A2112C00D6C332 /* UINavigationController+GDP.m */; };
 		657CE28723A2112D00D6C332 /* UITextField+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27923A2112C00D6C332 /* UITextField+GDP.m */; };
 		657CE28823A2112D00D6C332 /* UITextField+NumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27C23A2112C00D6C332 /* UITextField+NumberFormat.m */; };
@@ -36,13 +35,11 @@
 		657CE26D23A2112B00D6C332 /* GDPFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPFileManager.m; sourceTree = "<group>"; };
 		657CE26E23A2112B00D6C332 /* NSDate+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+GDP.m"; sourceTree = "<group>"; };
 		657CE26F23A2112B00D6C332 /* UILabel+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GDP.m"; sourceTree = "<group>"; };
-		657CE27023A2112B00D6C332 /* UIViewController+ZBCustomBackItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZBCustomBackItem.h"; sourceTree = "<group>"; };
 		657CE27123A2112B00D6C332 /* UINavigationController+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+GDP.h"; sourceTree = "<group>"; };
 		657CE27223A2112B00D6C332 /* UIView+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GDP.h"; sourceTree = "<group>"; };
 		657CE27323A2112C00D6C332 /* UITabBar+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+GDP.h"; sourceTree = "<group>"; };
 		657CE27423A2112C00D6C332 /* UITabBar+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+GDP.m"; sourceTree = "<group>"; };
 		657CE27523A2112C00D6C332 /* UILabel+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GDP.h"; sourceTree = "<group>"; };
-		657CE27623A2112C00D6C332 /* UIViewController+ZBCustomBackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZBCustomBackItem.m"; sourceTree = "<group>"; };
 		657CE27723A2112C00D6C332 /* GDPFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPFileManager.h; sourceTree = "<group>"; };
 		657CE27823A2112C00D6C332 /* UINavigationController+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+GDP.m"; sourceTree = "<group>"; };
 		657CE27923A2112C00D6C332 /* UITextField+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+GDP.m"; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 				657CE27823A2112C00D6C332 /* UINavigationController+GDP.m */,
 				657CE27B23A2112C00D6C332 /* UITextField+NumberFormat.h */,
 				657CE27C23A2112C00D6C332 /* UITextField+NumberFormat.m */,
-				657CE27023A2112B00D6C332 /* UIViewController+ZBCustomBackItem.h */,
-				657CE27623A2112C00D6C332 /* UIViewController+ZBCustomBackItem.m */,
 				657CE27723A2112C00D6C332 /* GDPFileManager.h */,
 				657CE26D23A2112B00D6C332 /* GDPFileManager.m */,
 			);
@@ -237,7 +232,6 @@
 				657CE28923A2112D00D6C332 /* UIView+GDP.m in Sources */,
 				FE99D5BC212BF2C800BE52AA /* UIAlertController+GDP.m in Sources */,
 				657CE28323A2112D00D6C332 /* UILabel+GDP.m in Sources */,
-				657CE28523A2112D00D6C332 /* UIViewController+ZBCustomBackItem.m in Sources */,
 				657CE28123A2112C00D6C332 /* GDPFileManager.m in Sources */,
 				FE5088D020B66D46002E5159 /* main.m in Sources */,
 				FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */,

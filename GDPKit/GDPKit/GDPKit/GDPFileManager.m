@@ -73,16 +73,10 @@
 + (long long ) fileSizeAtPath:(NSString*)filePath
 {
     NSFileManager *manager = [NSFileManager defaultManager];
-    
     if ([manager fileExistsAtPath:filePath])
     {
         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[manager attributesOfItemAtPath:filePath error:nil]];
-        
         return dic.fileSize;
-    }
-    else
-    {
-        
     }
     return 0;
 }

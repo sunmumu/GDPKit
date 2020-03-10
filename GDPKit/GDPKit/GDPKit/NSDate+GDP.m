@@ -21,9 +21,9 @@
             return @"刚刚";
         }
         if (delta < 3600) {
-            return [NSString stringWithFormat:@"%d分钟前", (delta / 60)];
+            return [NSString stringWithFormat:@"%ld分钟前", (delta / 60)];
         }
-        return [NSString stringWithFormat:@"%d小时前", (delta / 3600)];
+        return [NSString stringWithFormat:@"%ld小时前", (delta / 3600)];
     }
     
     // 2. 其他天
@@ -86,7 +86,7 @@
         return @"无有效日期";
     }
     NSDate *today = [NSDate date];
-    
+
     return [today nextDay:days];
 }
 
@@ -113,13 +113,13 @@
     
     NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
     
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
     
     [calendar setTimeZone: timeZone];
     
-    NSCalendarUnit calendarUnit = NSWeekdayCalendarUnit;
+    NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
     
     NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:inputDate];
     

@@ -232,7 +232,7 @@
 }
 
 /**
- 格式化时间
+ 格式化时间 yyyy-MM-dd
  
  @param timestamp 时间戳
  @return 返回时间格式 yyyy-MM-dd
@@ -245,7 +245,7 @@
 }
 
 /**
- 格式化时间
+ 格式化时间 yyyy-MM-dd HH:mm:ss
  
  @param timestamp 时间戳
  @return NSString

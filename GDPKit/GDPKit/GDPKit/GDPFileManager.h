@@ -11,7 +11,7 @@
 + (void)clearTheCache;
 
 /**
- 遍历文件夹获得文件夹大小，返回多少M
+ 遍历文件夹获得文件夹大小，返回多少G/M/KB/B
  */
 + (NSString *)folderSizeAtPath:(NSString*)folderPath;
 
