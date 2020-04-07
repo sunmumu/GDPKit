@@ -71,4 +71,7 @@
  */
 + (UIImage *)badgeImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor;
 
+// 解析gif图片转成图片数组
++ (NSMutableArray *)praseGIFDataToImageArray:(NSData *)data;
+
 @end

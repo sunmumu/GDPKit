@@ -189,7 +189,7 @@
  @return 图片
  */
 + (UIImage *)acquireImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
-    NSString *firstString = [NSString firstCharactorWithString:string];
+    NSString *firstString = [NSString getFirstCharactorWithString:string];
     return [UIImage createImageWithString:firstString font:font imageSize:size hexString:hexColor];
 }
 
@@ -331,5 +331,30 @@
     }
     return NO;
 }
+
+// 解析gif图片转成图片数组
++ (NSMutableArray *)praseGIFDataToImageArray:(NSData *)data{
+    NSMutableArray *frames = [[NSMutableArray alloc] init];
+    CGImageSourceRef src = CGImageSourceCreateWithData((CFDataRef)data, NULL);
+    CGFloat animationTime = 0.f;
+    if (src) {
+        size_t l = CGImageSourceGetCount(src);
+        frames = [NSMutableArray arrayWithCapacity:l];
+        for (size_t i = 0; i < l; i++) {
+            CGImageRef img = CGImageSourceCreateImageAtIndex(src, i, NULL);
+            NSDictionary *properties = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(src, i, NULL));
+            NSDictionary *frameProperties = [properties objectForKey:(NSString *)kCGImagePropertyGIFDictionary];
+            NSNumber *delayTime = [frameProperties objectForKey:(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
+            animationTime += [delayTime floatValue];
+            if (img) {
+                [frames addObject:[UIImage imageWithCGImage:img]];
+                CGImageRelease(img);
+            }
+        }
+        CFRelease(src);
+    }
+    return frames;
+}
+
 
 @end
