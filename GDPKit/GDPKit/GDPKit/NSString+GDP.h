@@ -50,6 +50,12 @@
  */
 + (BOOL)checkMobileNumber:(NSString *)mobileNumber;
 
+/// 检查密码格式是否正确 (8-20位, 包含字母和数字)
+- (BOOL)checkPassWord;
+
+/// 检查身份证号码是否正确 (18位)
+- (BOOL)checkIDNumber;
+
 /**
  清除首尾空格
 

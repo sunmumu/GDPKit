@@ -18,6 +18,8 @@
 #import <GDPKit/UITextField+NumberFormat.h>
 //#import <GDPKit/UINavigationController+GDP.h>
 
+#import <GDPKit/GDP_SMSCodeButton.h>
+
 #else
 
 #import "NSString+GDP.h"
@@ -33,6 +35,8 @@
 #import "GDPFileManager.h"
 #import "UITextField+NumberFormat.h"
 //#import "UINavigationController+GDP.h"
+
+#import "GDP_SMSCodeButton.h"
 
 //特殊说明
 //UIView+ScrollToTop.h用法 :

@@ -11,7 +11,13 @@
 @implementation UITextField (GDP)
 
 - (void)addPlaceholderColor:(UIColor *)color {
-    [self setValue:color forKeyPath:@"_placeholderLabel.textColor"];
+    NSMutableAttributedString *placeHolderStr = [[NSMutableAttributedString alloc] initWithString:self.placeholder];
+    NSDictionary *attrDic = @{
+        @"NSFontAttributeName":[UIFont systemFontOfSize:15],
+        @"NSForegroundColorAttributeName":color
+    };
+    [placeHolderStr addAttributes:attrDic range:NSMakeRange(0, self.placeholder.length)];
+    self.attributedPlaceholder = placeHolderStr;
 }
 
 @end

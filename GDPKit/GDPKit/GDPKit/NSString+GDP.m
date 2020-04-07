@@ -91,6 +91,54 @@
     return [phoneTest evaluateWithObject:mobileNumber];
 }
 
+/// 检查密码格式是否正确 (8-20位, 包含字母和数字)
+- (BOOL)checkPassWord {
+    if (![self isKindOfClass:[NSString class]]) {
+        return NO;
+    }
+    if (CHECK_EMPTY_NSSTRING(self)) {
+        return NO;
+    }
+    NSString *phoneRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:self];
+}
+
+/// 检查身份证号码是否正确 (18位 或15位)
+- (BOOL)checkIDNumber {
+    if ([self checkIDNumberForFifteen] || [self checkIDNumberForEighteen]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)checkIDNumberForEighteen {
+    if (![self isKindOfClass:[NSString class]]) {
+        return NO;
+    }
+    if (CHECK_EMPTY_NSSTRING(self)) {
+        return NO;
+    }
+    NSString *phoneRegex = @"^([1-6][1-9]|50)\d{4}(18|19|20)\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:self];
+}
+
+
+- (BOOL)checkIDNumberForFifteen {
+    if (![self isKindOfClass:[NSString class]]) {
+        return NO;
+    }
+    if (CHECK_EMPTY_NSSTRING(self)) {
+        return NO;
+    }
+    NSString *phoneRegex = @"^([1-6][1-9]|50)\d{4}\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\d{3}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:self];
+}
+
+
 /**
  清除首尾空格
  
