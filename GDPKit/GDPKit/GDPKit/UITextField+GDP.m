@@ -10,14 +10,18 @@
 
 @implementation UITextField (GDP)
 
-- (void)addPlaceholderColor:(UIColor *)color {
-    NSMutableAttributedString *placeHolderStr = [[NSMutableAttributedString alloc] initWithString:self.placeholder];
+// MARK: - Change 修改
+/// 修改 placeholder文字颜色
+/// @param textField textField
+/// @param placeholderColor 文字颜色
++ (void)changePlaceholderColor:(UITextField *)textField placeholderColor:(UIColor *)placeholderColor {
+    NSMutableAttributedString *placeHolderStr = [[NSMutableAttributedString alloc] initWithString:textField.placeholder];
     NSDictionary *attrDic = @{
         @"NSFontAttributeName":[UIFont systemFontOfSize:15],
-        @"NSForegroundColorAttributeName":color
+        @"NSForegroundColorAttributeName":placeholderColor
     };
-    [placeHolderStr addAttributes:attrDic range:NSMakeRange(0, self.placeholder.length)];
-    self.attributedPlaceholder = placeHolderStr;
+    [placeHolderStr addAttributes:attrDic range:NSMakeRange(0, textField.placeholder.length)];
+    textField.attributedPlaceholder = placeHolderStr;
 }
 
 @end

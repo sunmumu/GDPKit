@@ -12,12 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITextField (GDP)
 
-/**
- 设置 PlaceholderColor
-
- @param color color
- */
-- (void)addPlaceholderColor:(UIColor *)color;
+// MARK: - Change 修改
+/// 修改 placeholder文字颜色
+/// @param textField textField
+/// @param placeholderColor 文字颜色
++ (void)changePlaceholderColor:(UITextField *)textField placeholderColor:(UIColor *)placeholderColor;
 
 @end
 
