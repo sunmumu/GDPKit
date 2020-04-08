@@ -4,7 +4,7 @@
 
 @implementation NSString (GDP)
 
-// MARK: - Change
+// MARK: - Change 修改
 /// 对无效字符串进行处理(字符串所有无效格式)
 /// @param string 待处理字符串string
 + (NSString *)changeToUnNullString:(id)string {
@@ -175,7 +175,7 @@
     return string;
 }
 
-// MARK: - CheckIs
+// MARK: - CheckIs 检查是否
 
 /// 检查是否空字符串
 /// @param string id
@@ -290,7 +290,7 @@
     return [predicate evaluateWithObject:string];
 }
 
-// MARK: - Get
+// MARK: - Get 获取
 /// 获取APP的版本号 例 1.01
 + (NSString *)getAppVersion {
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];

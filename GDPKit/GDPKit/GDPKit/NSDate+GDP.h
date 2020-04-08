@@ -10,16 +10,22 @@
 
 @interface NSDate (GDP)
 
-// 日期转化为 便于阅读的日期 如: 3分钟前, 昨天, 一个月前
-- (NSString *)dateToTimeString;
+// MARK: - Change 修改
+/// 日期 转成 星期几
+/// @param date 日期
++ (NSString *)changeDateToWeekDayString:(NSDate*)date;
 
-//获取当前日期之后的N个工作日后的日期
-+ (NSString *)nextWeekdays:(NSInteger)days;
+/// 日期 转成 便于阅读的日期 如: 3分钟前, 昨天, 一个月前
+/// @param date 日期
++ (NSString *)changeDateToChatTimeString:(NSDate *)date;
 
-//获取当前日期之后的N天的日期
-+ (NSString *)nextDays:(NSInteger)days;
+// MARK: - Get 获取
+/// 获取现在, N个工作日后的日期
+/// @param day N个工作日
++ (NSString *)getWorkDayStringFromNowAfterNumberDay:(NSInteger)day;
 
-//获取某个日期 是星期几
-+ (NSString *)weekdayStringFromDate:(NSDate*)inputDate;
+/// 获取现在, N天之后的日期
+/// @param day N天
++ (NSString *)getDayStringFromNowAfterNumberDay:(NSInteger)day;
     
 @end

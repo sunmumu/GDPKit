@@ -10,13 +10,34 @@
 
 @implementation NSDate (GDP)
 
-// 日期转化为 便于阅读的日期 如: 3分钟前, 昨天, 一个月前
-- (NSString *)dateToTimeString {
+// MARK: - Change 修改
+/// 日期 转成 星期几
+/// @param date 日期
++ (NSString *)changeDateToWeekDayString:(NSDate*)date {
+    
+    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
+    
+    [calendar setTimeZone: timeZone];
+    
+    NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
+    
+    NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date];
+    
+    return [weekdays objectAtIndex:theComponents.weekday];
+}
+
+/// 日期 转成 便于阅读的日期 如: 3分钟前, 昨天, 一个月前
+/// @param date 日期
++ (NSString *)changeDateToChatTimeString:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     // 1. 判断日期是否是今天
-    if ([calendar isDateInToday:self]) {
-        NSInteger delta = -(NSInteger)self.timeIntervalSinceNow;
+    if ([calendar isDateInToday:date]) {
+        NSInteger delta = -(NSInteger)date.timeIntervalSinceNow;
         if (delta < 60) {
             return @"刚刚";
         }
@@ -29,30 +50,32 @@
     // 2. 其他天
     NSString *formatterString = @" HH:mm";
     
-    if ([calendar isDateInYesterday:self]) {
+    if ([calendar isDateInYesterday:date]) {
         formatterString = [@"昨天" stringByAppendingString:formatterString];
     } else {
         formatterString = [@"MM-dd" stringByAppendingString:formatterString];
         
-        NSInteger year = [calendar component:NSCalendarUnitYear fromDate:self];
+        NSInteger year = [calendar component:NSCalendarUnitYear fromDate:date];
         NSInteger thisYear = [calendar component:NSCalendarUnitYear fromDate:[[NSDate alloc] init]];
         
         if (year != thisYear) {
             formatterString = [@"yyyy-" stringByAppendingString:formatterString];
         }
-        
     }
     NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
     [dataFormatter setDateFormat:formatterString];
     
-    NSString *timeString = [dataFormatter stringFromDate:self];
+    NSString *timeString = [dataFormatter stringFromDate:date];
     
     return timeString;
 }
 
-//获取当前日期之后的N个工作日后的日期
-+ (NSString *)nextWeekdays:(NSInteger)days {
-    if (days <= 0) {
+
+// MARK: - Get 获取
+/// 获取现在, N个工作日后的日期
+/// @param day N个工作日
++ (NSString *)getWorkDayStringFromNowAfterNumberDay:(NSInteger)day {
+    if (day <= 0) {
         return @"无有效日期";
     }
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese];
@@ -62,12 +85,12 @@
     NSDate *today = [NSDate date];
     comps = [calendar components:unitFlags fromDate:today];
     NSInteger weekday = [comps weekday];
-    NSInteger m = (days/5) * 7;
+    NSInteger m = (day/5) * 7;
     
-    NSInteger remainder = days % 5;
+    NSInteger remainder = day % 5;
     switch (weekday) {
         case 1:
-            m = ((days- 1) / 5) * 7 + remainder;//周天
+            m = ((day- 1) / 5) * 7 + remainder;//周天
             break;
         case 2:case 3:case 5:case 6:case 7:
         {
@@ -77,26 +100,20 @@
         default:
             break;
     }
-    return [today nextDay:m];
+    return [NSDate getDayStringFromNowAfterNumberDay:m];
 }
 
-//获取当前日期之后的N天的日期
-+ (NSString *)nextDays:(NSInteger)days {
-    if (days <= 0) {
+/// 获取现在, N天之后的日期
+/// @param day N天
++ (NSString *)getDayStringFromNowAfterNumberDay:(NSInteger)day {
+    if (day <= 0) {
         return @"无有效日期";
     }
-    NSDate *today = [NSDate date];
-
-    return [today nextDay:days];
-}
-
-//获取当前日期之后N天的日期
-- (NSString *)nextDay:(NSInteger)day{
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *component = [[NSDateComponents alloc] init];
     [component setDay:day];
-    NSDate *date = [calendar dateByAddingComponents:component toDate:self options:0];
-    NSString *weekdayString = [NSDate weekdayStringFromDate:date];
+    NSDate *date = [calendar dateByAddingComponents:component toDate:[NSDate date] options:0];
+    NSString *weekdayString = [NSDate changeDateToWeekDayString:date];
     
     NSString *formatterString = @"yyyy-MM-dd";
     NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
@@ -105,25 +122,6 @@
     NSString *dateString = [NSString stringWithFormat:@"%@ %@",timeString, weekdayString];
     
     return dateString;
-}
-
-
-//获取某个日期 是星期几
-+ (NSString *)weekdayStringFromDate:(NSDate*)inputDate {
-    
-    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
-    
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    
-    NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
-    
-    [calendar setTimeZone: timeZone];
-    
-    NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
-    
-    NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:inputDate];
-    
-    return [weekdays objectAtIndex:theComponents.weekday];
 }
 
 @end

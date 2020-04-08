@@ -13,9 +13,9 @@ ios项目开发常用方法,整理和封装,例如YYKit框架.
 
 ### 例
 ```
-NSString *version = [NSString appVersion];
+NSString *version = [NSString getAppVersion];
 ```
 
 ## License
 
-GDPHeadView is released under a MIT License. See LICENSE file for details.
+GDPKit is released under a MIT License. See LICENSE file for details.

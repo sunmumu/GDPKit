@@ -10,176 +10,161 @@
 
 @implementation UILabel (GDP)
 
-/**
- 字体加粗
- 
- @param size 加粗大小
- */
-- (void)addBoldWithSize:(NSInteger)size {
-    [self setFont:[UIFont fontWithName:@"Helvetica-Bold" size:size]];
-}
-
-- (void)addBoldWithSize:(NSInteger)size range:(NSRange)range {
-    UIFont *boldFont = [UIFont boldSystemFontOfSize:size];
-    NSString *string = self.text;
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
-    [attrString addAttribute:NSFontAttributeName value:boldFont range:range];//设置Text这四个字母的字体为粗体
-    self.attributedText = attrString;
-}
-
-/**
- 字体加粗和倾斜
- 
- @param size 加粗大小
- */
-- (void)addBoldAndObliqueWithSize:(NSInteger)size {
-    [self setFont:[UIFont fontWithName:@"Helvetica-BoldOblique" size:size]];
-}
-
-/**
- 文本置顶
- */
-- (void)alignTop {
-    if ([self.text isKindOfClass:[NSNull class]])
+// MARK: - Change 修改
+/// 文本置顶
+/// @param label label
++ (void)changeTextAlignTop:(UILabel *)label {
+    if ([label.text isKindOfClass:[NSNull class]])
         return;
-    CGSize size = [self sizeThatFits:CGSizeMake(self.frame.size.width, MAXFLOAT)];
-    int num = size.height/self.font.lineHeight;
-    if (num < self.numberOfLines) {
-        NSString *str = self.text;
-        for (int i=0; i<self.numberOfLines-num; i++) {
+    CGSize size = [label sizeThatFits:CGSizeMake(label.frame.size.width, MAXFLOAT)];
+    int num = size.height/label.font.lineHeight;
+    if (num < label.numberOfLines) {
+        NSString *str = label.text;
+        for (int i=0; i<label.numberOfLines-num; i++) {
             str = [str stringByAppendingString:@"\n "];
         }
-        self.text = str;
+        label.text = str;
     }
 }
 
-/**
- 文本置底
- */
-- (void)alignBottom {
-    CGSize fontSize = [self.text sizeWithFont:self.font];
+/// 文本置底
+/// @param label label
++ (void)changeTextAlignBottom:(UILabel *)label {
+    CGSize fontSize = [label.text sizeWithFont:label.font];
     
-    double finalHeight = fontSize.height * self.numberOfLines;
-    double finalWidth = self.frame.size.width;    //expected width of label
+    double finalHeight = fontSize.height * label.numberOfLines;
+    double finalWidth = label.frame.size.width;    //expected width of label
     
-    CGSize theStringSize = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(finalWidth, finalHeight) lineBreakMode:self.lineBreakMode];
+    CGSize theStringSize = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(finalWidth, finalHeight) lineBreakMode:label.lineBreakMode];
     
     int newLinesToPad = (finalHeight  - theStringSize.height) / fontSize.height;
     
     for(int i=0; i< newLinesToPad; i++) {
-        self.text = [NSString stringWithFormat:@" \n%@",self.text];
+        label.text = [NSString stringWithFormat:@" \n%@",label.text];
     }
 }
 
-/**
- 添加行间距
-
- @param spa 间距
- */
-- (void) addLabelSpasing:(CGFloat)spa {
-    if ([self.text isKindOfClass:[NSNull class]] || !self.text)
+/// 修改行间距
+/// @param label label
+/// @param spase spase 行间距
++ (void)changeSpase:(UILabel *)label spase:(CGFloat)spase {
+    if ([label.text isKindOfClass:[NSNull class]] || !label.text)
         return;
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineSpacing = spa;
-    [attr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, self.text.length)];
-    self.attributedText = attr;
+    style.lineSpacing = spase;
+    [attr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];
+    label.attributedText = attr;
 }
 
-/**
- 修改字体大小
- 
- @param fontSize 字体大小
- @param range 范围
- */
-- (void) changeLabelfont:(CGFloat)fontSize range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+/// 修改文字大小 指定范围
+/// @param label label
+/// @param fontSize 文字大小
+/// @param range 范围
++ (void)changeFontSize:(UILabel *)label fontSize:(CGFloat)fontSize range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     [attr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:fontSize] range:range];
-    self.attributedText = attr;
+    label.attributedText = attr;
 }
 
-/**
- 修改字体颜色
-
- @param color color description
- @param range range description
- */
-- (void)changeLabelcolor:(UIColor *)color range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+/// 修改文字颜色
+/// @param label label
+/// @param color 文字颜色
+/// @param range 范围
++ (void)changeTextColor:(UILabel *)label color:(UIColor *)color range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     [attr addAttribute:NSForegroundColorAttributeName value:color range:range];
-    self.attributedText = attr;
+    label.attributedText = attr;
 }
 
-/**
- 添加下划线 修改字体颜色 范围
- 
- @param color color
- @param fontSize fontSize description
- @param range range description
- */
-- (void)changeLabelAddLinecolor:(UIColor *)color range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+/// 修改文字颜色并添加文字下划线 范围
+/// @param label label
+/// @param color 文字颜色
+/// @param range 范围
++ (void)changeTextColorAndAddTextUnderLine:(UILabel *)label color:(UIColor *)color range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     [attr addAttribute:NSForegroundColorAttributeName value:color range:range];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineSpacing = 3;
-    [attr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, self.text.length)];
-    self.attributedText = attr;
+    [attr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];
+    label.attributedText = attr;
 }
 
-/**
- 修改字体颜色 字体大小
- 
- @param color color description
- @param range range description
- */
-- (void)changeLabelcolor:(UIColor *)color font:(CGFloat)fontSize range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+/// 修改文字颜色 和文字大小
+/// @param label label
+/// @param color 文字颜色
+/// @param fontSize 文字大小
+/// @param range 范围
++ (void)changeTextColorAndFontSize:(UILabel *)label color:(UIColor *)color font:(CGFloat)fontSize range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     [attr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:fontSize] range:range];
     [attr addAttribute:NSForegroundColorAttributeName value:color range:range];
-    self.attributedText = attr;
+    label.attributedText = attr;
 }
 
-/**
- 添加删除线
- 
- @param color color description
- @param range range description
- */
-- (void)addDeleteLineColor:(UIColor *)color range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
-    [attr addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:range];
-    [attr addAttribute:NSStrikethroughColorAttributeName value:color range:range];
-    self.attributedText = attr;
-}
-
-/**
- 修改字体颜色 字体大小 删除线
- 
- @param color color description
- @param fontSize fontSize description
- @param del del description
- @param range range description
- */
-- (void)changeLabelcolor:(UIColor *)color font:(CGFloat)fontSize delColor:(UIColor *)del range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+/// 修改文字颜色 文字大小 添加删除线并设置颜色
+/// @param label label
+/// @param color 文字颜色
+/// @param fontSize 文字大小
+/// @param deleteLineColor 删除线颜色
+/// @param range 范围
++ (void)changeTextColorAndFontSizeAndAddDeleteLine:(UILabel *)label color:(UIColor *)color font:(CGFloat)fontSize deleteLineColor:(UIColor *)deleteLineColor range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     [attr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:fontSize] range:range];
     [attr addAttribute:NSForegroundColorAttributeName value:color range:range];
     [attr addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:range];
-    [attr addAttribute:NSStrikethroughColorAttributeName value:color range:range];
-    self.attributedText = attr;
+    [attr addAttribute:NSStrikethroughColorAttributeName value:deleteLineColor range:range];
+    label.attributedText = attr;
 }
 
-/**
- 添加下划线
- 
- @param color color description
- @param range range description
- */
-- (void)addUnderlineColor:(UIColor *)color range:(NSRange)range {
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:self.text];
+
+// MARK: - Add 添加
+/// 字体加粗
+/// @param label label
+/// @param size 加粗大小
++ (void)addBold:(UILabel *)label size:(NSInteger)size {
+    [label setFont:[UIFont fontWithName:@"Helvetica-Bold" size:size]];
+}
+
+/// 字体加粗 指定范围
+/// @param label label
+/// @param size 加粗大小
+/// @param range 范围
++ (void)addBold:(UILabel *)label size:(NSInteger)size range:(NSRange)range {
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:size];
+    NSString *string = label.text;
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
+    [attrString addAttribute:NSFontAttributeName value:boldFont range:range];//设置Text这四个字母的字体为粗体
+    label.attributedText = attrString;
+}
+
+/// 字体加粗和倾斜
+/// @param label label
+/// @param size 加粗大小
++ (void)addBoldAndOblique:(UILabel *)label size:(NSInteger)size {
+    [label setFont:[UIFont fontWithName:@"Helvetica-BoldOblique" size:size]];
+}
+
+/// 添加删除线
+/// @param label label
+/// @param color 下划线颜色
+/// @param range 范围
++ (void)addDeleteLine:(UILabel *)label color:(UIColor *)color range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
+    [attr addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:range];
+    [attr addAttribute:NSStrikethroughColorAttributeName value:color range:range];
+    label.attributedText = attr;
+}
+
+/// 添加下划线并设置下划线颜色 指定范围
+/// @param label label
+/// @param underlineColor 下划线颜色
+/// @param range 范围
++ (void)addUnderlineColor:(UILabel *)label underlineColor:(UIColor *)underlineColor range:(NSRange)range {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
     [attr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:range];
-    [attr addAttribute:NSStrikethroughColorAttributeName value:color range:range];
-    self.attributedText = attr;
+    [attr addAttribute:NSStrikethroughColorAttributeName value:underlineColor range:range];
+    label.attributedText = attr;
 }
 
 @end

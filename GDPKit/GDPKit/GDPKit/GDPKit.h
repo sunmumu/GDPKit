@@ -5,7 +5,6 @@
 #if __has_include(<GDPKit/GDPKit.h>)
 
 #import <GDPKit/NSString+GDP.h>
-#import <GDPKit/NSData+GDP.h>
 #import <GDPKit/NSDate+GDP.h>
 #import <GDPKit/UIImage+GDP.h>
 #import <GDPKit/UILabel+GDP.h>
@@ -23,7 +22,6 @@
 #else
 
 #import "NSString+GDP.h"
-#import "NSData+GDP.h"
 #import "NSDate+GDP.h"
 #import "UIImage+GDP.h"
 #import "UILabel+GDP.h"
