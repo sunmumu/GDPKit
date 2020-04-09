@@ -10,14 +10,10 @@
 
 @implementation UIImage (GDP)
 
-/**
- 压缩图片(UIImage)到指定大小
- 
- @param image 传入UIImage
- @param maxLength 传入压缩到多少kb
- @return 返回maxLength大小内的UIImage
- */
-+ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength {
+/// 压缩图片 到指定大小容量
+/// @param image image
+/// @param maxLength 指定大小容量
++ (UIImage *)changeImageToMaxLength:(UIImage *)image maxLength:(NSUInteger)maxLength {
     
     if (!image) {
         return image;
@@ -40,10 +36,14 @@
     return compressedImage;
 }
 
-- (NSData *)compressWithMaxLength:(NSUInteger)maxLength {
+
+/// 压缩图片 到指定大小容量 返回NSData
+/// @param image image
+/// @param maxLength 指定大小容量
++ (NSData *)changeImageToMaxLengthData:(UIImage *)image maxLength:(NSUInteger)maxLength {
     // Compress by quality
     CGFloat compression = 1;
-    NSData *data = UIImageJPEGRepresentation(self, compression);
+    NSData *data = UIImageJPEGRepresentation(image, compression);
     //NSLog(@"Before compressing quality, image size = %ld KB",data.length/1024);
     if (data.length < maxLength) return data;
     
@@ -51,7 +51,7 @@
     CGFloat min = 0;
     for (int i = 0; i < 6; ++i) {
         compression = (max + min) / 2;
-        data = UIImageJPEGRepresentation(self, compression);
+        data = UIImageJPEGRepresentation(image, compression);
         //NSLog(@"Compression = %.1f", compression);
         //NSLog(@"In compressing quality loop, image size = %ld KB", data.length / 1024);
         if (data.length < maxLength * 0.9) {
@@ -84,6 +84,10 @@
     return data;
 }
 
+
+/// 压缩图片 到指定大小容量
+/// @param image image
+/// @param maxLength 指定大小容量
 + (UIImage *)compressImage:(UIImage *)image MaxLength:(NSUInteger)maxLength {
     if (!image) {
         return image;
@@ -134,27 +138,19 @@
     return [UIImage imageWithData:data];
 }
 
-/**
- 通过URL获取图片
- 
- @param imageUrl 图片URL
- @return UIImage
- */
-+ (UIImage *)getImage:(NSString *)imageUrl {
+/// 获取 指定URL 下的图片
+/// @param imageUrlStrig 图片URL字符串
++ (UIImage *)getImage:(NSString *)imageUrlStrig {
     UIImage *image;
-    if (CHECK_NOT_EMPTY_NSSTRING(imageUrl)) {
-        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+    if (CHECK_NOT_EMPTY_NSSTRING(imageUrlStrig)) {
+        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrlStrig]]];
     }
     return image;
 }
 
-/**
- 通过颜色 创建图片
- 
- @param color color
- @return image
- */
-+ (UIImage *)imageWithColor:(UIColor *)color {
+/// 通过颜色 创建图片
+/// @param color 颜色
++ (UIImage *)getImageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0, 0, 10, 40); //宽高 1.0只要有值就够了
     UIGraphicsBeginImageContext(rect.size); //在这个范围内开启一段上下文
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -166,19 +162,17 @@
     return image;
 }
 
-/**
- 通过字符串 绘制图片个数 角标的图片
- 
- @param string 字符串
- @param size 图片大小
- @return 图片
- */
-+ (UIImage *)badgeImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
-    if (string.length < 1 || [string integerValue] == 1) {
+/// 绘制图片 根据字符串
+/// @param badgeString 角标字符串
+/// @param font 文字大小
+/// @param size 图片大小
+/// @param hexColor 颜色
++ (UIImage *)getImageWithBadgeString:(NSString *)badgeString font:(NSInteger)font imageSize:(CGSize)size hexColor:(NSString *)hexColor {
+    if (badgeString.length < 1 || [badgeString integerValue] == 1) {
         return [UIImage new];
     }
-    NSString *firstString = [string substringWithRange:NSMakeRange(0, 1)];
-    return [UIImage createImageWithString:firstString font:font imageSize:size hexString:hexColor];
+    NSString *firstString = [badgeString substringWithRange:NSMakeRange(0, 1)];
+    return [UIImage getImageWithString:firstString font:font imageSize:size hexString:hexColor];
 }
 
 /**
@@ -190,11 +184,11 @@
  */
 + (UIImage *)acquireImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
     NSString *firstString = [NSString getFirstCharactorWithString:string];
-    return [UIImage createImageWithString:firstString font:font imageSize:size hexString:hexColor];
+    return [UIImage getImageWithString:firstString font:font imageSize:size hexString:hexColor];
 }
 
 // 根据nikeName绘制图片
-+ (UIImage *)createImageWithString:(NSString *)name font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString*)hexColor {
++ (UIImage *)getImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString*)hexColor {
     UIImage *image = [UIImage imageColor:[UIImage colorWithHexString:hexColor alpha:0.5] size:size cornerRadius:size.width / 2];
     UIGraphicsBeginImageContextWithOptions (size, NO , 0.0 );
     [image drawAtPoint : CGPointMake ( 0 , 0 )];
@@ -204,8 +198,8 @@
     CGContextDrawPath (context, kCGPathStroke);
     
     // 画名字
-    CGSize nameSize = [name sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:font]}];
-    [name drawAtPoint : CGPointMake ( (size.width  - nameSize.width) / 2 , (size.height  - nameSize.height) / 2 ) withAttributes : @{NSFontAttributeName : [UIFont systemFontOfSize:font], NSForegroundColorAttributeName :HEXCOLOR(0Xffffff)} ];
+    CGSize nameSize = [string sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:font]}];
+    [string drawAtPoint : CGPointMake ( (size.width  - nameSize.width) / 2 , (size.height  - nameSize.height) / 2 ) withAttributes : @{NSFontAttributeName : [UIFont systemFontOfSize:font], NSForegroundColorAttributeName :HEXCOLOR(0Xffffff)} ];
     
     // 返回绘制的新图形
     UIImage *newImage= UIGraphicsGetImageFromCurrentImageContext ();

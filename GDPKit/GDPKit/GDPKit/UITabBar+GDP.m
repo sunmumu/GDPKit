@@ -10,10 +10,13 @@
 
 @implementation UITabBar (GDP)
 
-//显示
-- (void)showBadgeOnItemIndex:(int)index WithCount:(NSInteger)count{
+/// 显示 角标个数 指定tabbar
+/// @param tabBar tabBar
+/// @param index 下标
+/// @param count 角标个数
++ (void)showBadge:(UITabBar *)tabBar index:(int)index WithCount:(NSInteger)count{
     //移除之前的圆点
-    [self removeBadgeOnItemIndex:index];
+    [tabBar removeBadgeOnItemIndex:index];
     
     //新建圆点
     UILabel *badgeView = [[UILabel alloc]init];
@@ -25,19 +28,23 @@
     badgeView.layer.cornerRadius = 7.5;//圆形
     badgeView.clipsToBounds = YES;
     badgeView.backgroundColor = [UIColor redColor];//颜色
-    CGRect tabFrame = self.frame;
+    CGRect tabFrame = tabBar.frame;
     
     //位置
     float percentX = (index +0.6) / 4;
     CGFloat x = ceilf(percentX * tabFrame.size.width);
     CGFloat y = ceilf(0.1 * tabFrame.size.height-3);
     badgeView.frame = CGRectMake(x, y, 15, 15);//圆形大小为10
-    [self addSubview:badgeView];
+    [tabBar addSubview:badgeView];
 }
 
-- (void)showBadgeOnItemIndex:(int)index {
+
+/// 显示 角标圆点 指定tabbar
+/// @param tabBar tabBar
+/// @param index 下标
++ (void)showBadge:(UITabBar *)tabBar index:(int)index {
     //移除之前的圆点
-    [self removeBadgeOnItemIndex:index];
+    [tabBar removeBadgeOnItemIndex:index];
     
     //新建圆点
     UILabel *badgeView = [[UILabel alloc]init];
@@ -49,20 +56,22 @@
     badgeView.layer.cornerRadius = 3.5;//圆形
     badgeView.clipsToBounds = YES;
     badgeView.backgroundColor = [UIColor redColor];//颜色
-    CGRect tabFrame = self.frame;
+    CGRect tabFrame = tabBar.frame;
     
     //位置
     float percentX = (index +0.6) / 4;
     CGFloat x = ceilf(percentX * tabFrame.size.width);
     CGFloat y = ceilf(0.1 * tabFrame.size.height-3);
     badgeView.frame = CGRectMake(x, y, 7, 7);//圆形大小为10
-    [self addSubview:badgeView];
+    [tabBar addSubview:badgeView];
 }
 
-//隐藏
-- (void)hideBadgeOnItemIndex:(int)index{
+/// 隐藏角标 指定tabbar
+/// @param tabBar tabBar
+/// @param index 下标
++ (void)hideBadge:(UITabBar *)tabBar index:(int)index{
     //移除
-    [self removeBadgeOnItemIndex:index];
+    [tabBar removeBadgeOnItemIndex:index];
 }
 
 //移除圆点

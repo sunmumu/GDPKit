@@ -5,7 +5,6 @@
 
 @interface UIImage (GDP)
 
-
 /**
  压缩图片(UIImage)到指定大小
 

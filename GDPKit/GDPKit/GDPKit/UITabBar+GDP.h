@@ -12,9 +12,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITabBar (GDP)
 
-- (void)showBadgeOnItemIndex:(int)index WithCount:(NSInteger)count;   //显示
-- (void)showBadgeOnItemIndex:(int)index;
-- (void)hideBadgeOnItemIndex:(int)index; //隐藏
+/// 显示 角标个数 指定tabbar
+/// @param tabBar tabBar
+/// @param index 下标
+/// @param count 角标个数
++ (void)showBadge:(UITabBar *)tabBar index:(int)index WithCount:(NSInteger)count;
+
+
+/// 显示 角标圆点 指定tabbar
+/// @param tabBar tabBar
+/// @param index 下标
++ (void)showBadge:(UITabBar *)tabBar index:(int)index;
+
+/// 隐藏角标 指定tabbar
+/// @param tabBar tabBar
+/// @param index 下标
++ (void)hideBadge:(UITabBar *)tabBar index:(int)index;
 
 @end
 
