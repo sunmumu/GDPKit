@@ -1,15 +1,13 @@
 //  Created by sunmumu
 
 #import "UIImage+GDP.h"
-
-#define CHECK_CLASS_NSSTRING(IPHONESTR) [[IPHONESTR class] isSubclassOfClass:[NSString class]] ? YES:NO
-#define CHECK_NOT_NSSTRING_OR_EMPTY_NSSTRING(IPHONESTR)  (CHECK_CLASS_NSSTRING(IPHONESTR) == YES) ? ((IPHONESTR == nil || [IPHONESTR isEqualToString:@""]) ? ((IPHONESTR = @""), YES):NO):YES
-#define CHECK_NOT_EMPTY_NSSTRING(IPHONESTR) (CHECK_NOT_NSSTRING_OR_EMPTY_NSSTRING(IPHONESTR) == YES) ? NO:YES
+#import "NSString+GDP.h"
 
 #define HEXCOLOR(rgbValue)                              [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation UIImage (GDP)
 
+// MARK: - Change 修改
 /// 压缩图片 到指定大小容量
 /// @param image image
 /// @param maxLength 指定大小容量
@@ -35,7 +33,6 @@
     UIImage *compressedImage = [UIImage imageWithData:imageData];
     return compressedImage;
 }
-
 
 /// 压缩图片 到指定大小容量 返回NSData
 /// @param image image
@@ -84,11 +81,10 @@
     return data;
 }
 
-
 /// 压缩图片 到指定大小容量
 /// @param image image
 /// @param maxLength 指定大小容量
-+ (UIImage *)compressImage:(UIImage *)image MaxLength:(NSUInteger)maxLength {
++ (UIImage *)changeImageToMaxLengthImage:(UIImage *)image MaxLength:(NSUInteger)maxLength {
     if (!image) {
         return image;
     }
@@ -138,11 +134,38 @@
     return [UIImage imageWithData:data];
 }
 
+/// 解析gif图片转成图片数组
+/// @param data Gif Data
++ (NSMutableArray *)changeGifDataToImageArray:(NSData *)data{
+    NSMutableArray *frames = [[NSMutableArray alloc] init];
+    CGImageSourceRef src = CGImageSourceCreateWithData((CFDataRef)data, NULL);
+    CGFloat animationTime = 0.f;
+    if (src) {
+        size_t l = CGImageSourceGetCount(src);
+        frames = [NSMutableArray arrayWithCapacity:l];
+        for (size_t i = 0; i < l; i++) {
+            CGImageRef img = CGImageSourceCreateImageAtIndex(src, i, NULL);
+            NSDictionary *properties = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(src, i, NULL));
+            NSDictionary *frameProperties = [properties objectForKey:(NSString *)kCGImagePropertyGIFDictionary];
+            NSNumber *delayTime = [frameProperties objectForKey:(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
+            animationTime += [delayTime floatValue];
+            if (img) {
+                [frames addObject:[UIImage imageWithCGImage:img]];
+                CGImageRelease(img);
+            }
+        }
+        CFRelease(src);
+    }
+    return frames;
+}
+
+
+// MARK: - Get 获取
 /// 获取 指定URL 下的图片
 /// @param imageUrlStrig 图片URL字符串
 + (UIImage *)getImage:(NSString *)imageUrlStrig {
     UIImage *image;
-    if (CHECK_NOT_EMPTY_NSSTRING(imageUrlStrig)) {
+    if (![NSString checkIsNullString:imageUrlStrig]) {
         image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrlStrig]]];
     }
     return image;
@@ -175,21 +198,23 @@
     return [UIImage getImageWithString:firstString font:font imageSize:size hexString:hexColor];
 }
 
-/**
- 通过字符串 绘制通讯录的头像
- 
- @param string 字符串
- @param size 图片大小
- @return 图片
- */
-+ (UIImage *)acquireImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
+/// 通过字符串 绘制通讯录的头像
+/// @param string 字符串
+/// @param font 字体大小
+/// @param size 图片大小
+/// @param hexColor 文字颜色
++ (UIImage *)getAcquireImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString *)hexColor {
     NSString *firstString = [NSString getFirstCharactorWithString:string];
     return [UIImage getImageWithString:firstString font:font imageSize:size hexString:hexColor];
 }
 
-// 根据nikeName绘制图片
+/// 根据nikeName绘制图片
+/// @param string 字符串
+/// @param font 字体大小
+/// @param size 图片大小
+/// @param hexColor 文字颜色
 + (UIImage *)getImageWithString:(NSString *)string font:(NSInteger)font imageSize:(CGSize)size hexString:(NSString*)hexColor {
-    UIImage *image = [UIImage imageColor:[UIImage colorWithHexString:hexColor alpha:0.5] size:size cornerRadius:size.width / 2];
+    UIImage *image = [UIImage getImageWithBackgroundColor:[UIImage getColorWithHexString:hexColor alpha:0.5] size:size cornerRadius:size.width / 2];
     UIGraphicsBeginImageContextWithOptions (size, NO , 0.0 );
     [image drawAtPoint : CGPointMake ( 0 , 0 )];
     
@@ -208,7 +233,11 @@
     
 }
 
-+ (UIImage *)imageColor:(UIColor *)color size:(CGSize)size cornerRadius:(CGFloat)radius {
+/// 获取 指定颜色的图片
+/// @param color 颜色
+/// @param size 图片大小
+/// @param radius 圆角
++ (UIImage *)getImageWithBackgroundColor:(UIColor *)color size:(CGSize)size cornerRadius:(CGFloat)radius {
     if (CGSizeEqualToSize(size, CGSizeZero)) {
         size = CGSizeMake(1, 1);
     }
@@ -231,7 +260,10 @@
     return colorImage;
 }
 
-+ (id)colorWithHexString:(NSString*)hexColor alpha:(CGFloat)alpha {
+/// 获取 颜色 根据HexString
+/// @param hexColor 16进制颜色字符串
+/// @param alpha 透明度
++ (UIColor *)getColorWithHexString:(NSString*)hexColor alpha:(CGFloat)alpha {
     
     unsigned int red,green,blue;
     NSRange range;
@@ -248,106 +280,6 @@
     
     UIColor* retColor = [UIColor colorWithRed:(float)(red/255.0f)green:(float)(green / 255.0f) blue:(float)(blue / 255.0f)alpha:alpha];
     return retColor;
-}
-
-// 按规则截取nikeName
-+ (NSString *)JW_dealWithNikeName:(NSString *)nikeName {
-    // 筛除部分特殊符号
-    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"【】"];
-    nikeName = [nikeName stringByTrimmingCharactersInSet:set];
-    NSString *showName = @"";
-    NSString *tempName = @"";
-    
-    NSRange range1 = [nikeName rangeOfString:@"-"];
-    
-    if (range1.length) {
-        // 含有“-”
-        tempName = [nikeName substringToIndex:range1.location];
-    }
-    else {
-        // 不含“-”
-        tempName = nikeName;
-    }
-    
-    NSRange range2 = [tempName rangeOfString:@"("];
-    
-    if (range2.length) {
-        // 含有“(”
-        tempName = [tempName substringToIndex:range2.location];
-    }
-    else {
-        // 不含“(”
-        tempName = tempName;
-    }
-    
-    if ([UIImage JW_isStringContainLetterWith:tempName]) {
-        // 含有字母取前两个
-        showName = [tempName substringToIndex:1];
-    }
-    else {
-        // 不含字母
-        if (!tempName.length) {
-            
-        }
-        else if (tempName.length == 1)
-        {
-            showName = [tempName substringToIndex:1];
-        }
-        else if (tempName.length == 1)
-        {
-            showName = [tempName substringToIndex:1];
-        }
-        else if (tempName.length == 3)
-        {
-            showName = [tempName substringFromIndex:1];
-        }
-        else if (tempName.length == 4)
-        {
-            showName = [tempName substringFromIndex:1];
-        }
-        else {
-            showName = [tempName substringToIndex:1];
-        }
-    }
-    return showName;
-}
-
-// 检查是否含有字母
-+ (BOOL)JW_isStringContainLetterWith:(NSString *)str {
-    if (!str) {
-        return NO;
-    }
-    NSRegularExpression *numberRegular = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive error:nil];
-    NSInteger count = [numberRegular numberOfMatchesInString:str options:NSMatchingReportProgress range:NSMakeRange(0, str.length)];
-    //count是str中包含[A-Za-z]数字的个数，只要count>0，说明str中包含数字
-    if (count > 0) {
-        return YES;
-    }
-    return NO;
-}
-
-// 解析gif图片转成图片数组
-+ (NSMutableArray *)praseGIFDataToImageArray:(NSData *)data{
-    NSMutableArray *frames = [[NSMutableArray alloc] init];
-    CGImageSourceRef src = CGImageSourceCreateWithData((CFDataRef)data, NULL);
-    CGFloat animationTime = 0.f;
-    if (src) {
-        size_t l = CGImageSourceGetCount(src);
-        frames = [NSMutableArray arrayWithCapacity:l];
-        for (size_t i = 0; i < l; i++) {
-            CGImageRef img = CGImageSourceCreateImageAtIndex(src, i, NULL);
-            NSDictionary *properties = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(src, i, NULL));
-            NSDictionary *frameProperties = [properties objectForKey:(NSString *)kCGImagePropertyGIFDictionary];
-            NSNumber *delayTime = [frameProperties objectForKey:(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
-            animationTime += [delayTime floatValue];
-            if (img) {
-                [frames addObject:[UIImage imageWithCGImage:img]];
-                CGImageRelease(img);
-            }
-        }
-        CFRelease(src);
-    }
-    return frames;
 }
 
 

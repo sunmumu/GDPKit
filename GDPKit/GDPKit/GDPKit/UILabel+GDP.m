@@ -7,6 +7,7 @@
 //
 
 #import "UILabel+GDP.h"
+#import "NSString+GDP.h"
 
 @implementation UILabel (GDP)
 
