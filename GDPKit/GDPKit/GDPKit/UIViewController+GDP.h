@@ -18,19 +18,22 @@ typedef void (^StringBlock)(NSString *result);
 
 @interface UIViewController (GDP)
 
-/**
- 弹出证件类型选择AlertController
- */
+// MARK: - Show 显示
+
+/// 显示选择 护照 身份证 驾驶证 弹框 AlertController
+/// @param firstBlock 点击事件回调
+/// @param secondBlock 点击事件回调
+/// @param thirdBlock 点击事件回调
 - (void)showSelectIDTypeAlertControllerDidClickManBlock:(StringBlock)firstBlock didClickSecondBlock:(StringBlock)secondBlock didClickThirdBlock:(StringBlock)thirdBlock;
 
-/**
- 弹出性别选择AlertController
- */
+/// 显示 性别选择弹框 AlertController
+/// @param firstBlock 点击事件回调
+/// @param secondBlock 点击事件回调
 - (void)showSelectGenderAlertControllerDidClickManBlock:(StringBlock)firstBlock didClickSecondBlock:(StringBlock)secondBlock;
 
-/**
- 弹出拍照和相册页面
- */
+/// 显示 选择拍照/相册 上传图片方式弹框
+/// @param isEditing 是否可编辑
 - (void)showSelectCammerAndPhotoAlumAlertController:(BOOL)isEditing;
+
 
 @end

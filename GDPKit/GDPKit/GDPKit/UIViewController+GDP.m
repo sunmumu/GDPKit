@@ -8,10 +8,11 @@
 
 @implementation UIViewController (GDP)
 
-// MARK: - AlertController
-/**
- 弹出证件类型选择AlertController
- */
+// MARK: - Show 显示
+/// 显示选择 护照 身份证 驾驶证 弹框 AlertController
+/// @param firstBlock 点击事件回调
+/// @param secondBlock 点击事件回调
+/// @param thirdBlock 点击事件回调
 - (void)showSelectIDTypeAlertControllerDidClickManBlock:(StringBlock)firstBlock didClickSecondBlock:(StringBlock)secondBlock didClickThirdBlock:(StringBlock)thirdBlock {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"护照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -33,9 +34,9 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
-/**
- 弹出性别选择AlertController
- */
+/// 显示 性别选择弹框 AlertController
+/// @param firstBlock 点击事件回调
+/// @param secondBlock 点击事件回调
 - (void)showSelectGenderAlertControllerDidClickManBlock:(StringBlock)firstBlock didClickSecondBlock:(StringBlock)secondBlock {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -52,10 +53,8 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
-
-/**
- 弹出头像上传选择方式
- */
+/// 显示 选择拍照/相册 上传图片方式弹框
+/// @param isEditing 是否可编辑
 - (void)showSelectCammerAndPhotoAlumAlertController:(BOOL)isEditing {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -68,11 +67,9 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
-/**
- 弹出相机界面
-
- @param target 执行者
- */
+/// 显示 相机页面
+/// @param target 执行者
+/// @param isEditing 是否编辑
 - (void)selectImageFromCamera:(UIViewController *)target isEditing:(BOOL)isEditing{
     //判断是否有相机
     if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]){
@@ -86,12 +83,9 @@
     }
 }
 
-
-/**
- 弹出相册界面
-
- @param target 执行者
- */
+/// 显示 相册页面
+/// @param target 执行者
+/// @param isEditing 是否编辑
 - (void)selectImageFromAlbum:(UIViewController *)target isEditing:(BOOL)isEditing{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     //资源类型为图片库
