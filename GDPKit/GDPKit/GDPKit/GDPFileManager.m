@@ -5,31 +5,28 @@
 
 @implementation GDPFileManager
 
-/**
- 清除缓存
- */
-+ (void)clearTheCache
-{
+/// 清除缓存
++ (void)clearTheCache {
     dispatch_async(
-                   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-                   , ^{
-                       NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
-                       NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
-                       for (NSString *p in files)
-                       {
-                           NSError *error;
-                           NSString *path = [cachPath stringByAppendingPathComponent:p];
-                           if ([[NSFileManager defaultManager] fileExistsAtPath:path])
-                           {
-                               [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-                           }
-                       }
-                   });
+       dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+       , ^{
+           NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+           NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
+           for (NSString *p in files)
+           {
+               NSError *error;
+               NSString *path = [cachPath stringByAppendingPathComponent:p];
+               if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+               {
+                   [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+               }
+           }
+        }
+    );
 }
 
-/**
- 遍历文件夹获得文件夹大小，返回多少M
- */
+/// 遍历文件夹获得文件夹大小，返回多少M
+/// @param folderPath 文件路径
 + (NSString *)folderSizeAtPath:(NSString*)folderPath
 {
     NSFileManager *manager = [NSFileManager defaultManager];
@@ -67,9 +64,8 @@
     }
 }
 
-/**
- 单个文件的大小
- */
+/// 单个文件的大小
+/// @param filePath 文件路径
 + (long long ) fileSizeAtPath:(NSString*)filePath
 {
     NSFileManager *manager = [NSFileManager defaultManager];

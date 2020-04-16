@@ -10,6 +10,12 @@
 
 @implementation UITextField (NumberFormat)
 
+/// 文字 空格格式化
+/// @param textField textField
+/// @param range 格式化的范围
+/// @param string 字符串
+/// @param blankLocation 要加的空格的位置 比如手机号11 位 如果需要 344的显示格式 空格位置就是 @[@4,@9]
+/// @param limitCount 限制的长度 超过此限制长度 则不能输入 如果输入的为0 则不显示输入的长度
 + (BOOL)inputTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
      replacementString:(NSString *)string
         blankLocations:(NSArray<NSNumber *> *)blankLocation
@@ -79,8 +85,10 @@
         return YES;
 }
 
-// 在指定的位置添加空格
-+(NSString*)insertString:(NSString*)string withBlankLocations:(NSArray<NSNumber *>*)locations {
+/// 在指定的位置添加空格
+/// @param string 字符串
+/// @param locations 空格位置
++ (NSString*)insertString:(NSString*)string withBlankLocations:(NSArray<NSNumber *>*)locations {
     if (!string) {
         return nil;
     }
@@ -93,12 +101,15 @@
     return  mutableString;
 }
 
-// 去除空格
+/// 去除空格
+/// @param string 字符串
 +(NSString*)removeBlankString:(NSString*)string {
     return [string stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
-// 设置光标
+/// 设置光标
+/// @param textField textField
+/// @param offset 光标偏移量
 + (void)setCursorLocation:(UITextField *)textField withOffset:(NSInteger) offset{
     UITextPosition *newPostion = [textField positionFromPosition:textField.beginningOfDocument offset:offset] ;
     textField.selectedTextRange = [textField textRangeFromPosition:newPostion toPosition:newPostion];
