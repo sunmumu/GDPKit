@@ -21,7 +21,9 @@
     if (!self.timer||![self.timer isValid]) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timeStart) userInfo:nil repeats:YES];
     }
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
     [self timeStart];
     _isCounting=YES;
 }
