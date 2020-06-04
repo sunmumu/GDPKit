@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//基类UIViewController 引用该category,实现ios13,present样式还是全屏
+//把文件放到项目中就行, 实现ios13,present样式还是全屏
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (ModalPresentationStyle)
