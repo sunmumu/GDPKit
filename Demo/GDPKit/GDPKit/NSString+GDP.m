@@ -189,9 +189,9 @@
         || [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]==0
         || [string isEqualToString:@"<null>"]
         || [string isEqualToString:@"(null)"]) {
-        return NO;
-    } else {
         return YES;
+    } else {
+        return NO;
     }
 }
 

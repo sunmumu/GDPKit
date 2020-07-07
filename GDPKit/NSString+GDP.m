@@ -1,6 +1,5 @@
 #import "NSString+GDP.h"
 #import <UIKit/UIKit.h>
-#import <objc/runtime.h>
 
 @implementation NSString (GDP)
 
@@ -190,9 +189,9 @@
         || [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]==0
         || [string isEqualToString:@"<null>"]
         || [string isEqualToString:@"(null)"]) {
-        return NO;
-    } else {
         return YES;
+    } else {
+        return NO;
     }
 }
 

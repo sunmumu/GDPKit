@@ -17,6 +17,7 @@
 		657CE28723A2112D00D6C332 /* UITextField+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27923A2112C00D6C332 /* UITextField+GDP.m */; };
 		657CE28823A2112D00D6C332 /* UITextField+NumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27C23A2112C00D6C332 /* UITextField+NumberFormat.m */; };
 		657CE28923A2112D00D6C332 /* UIView+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27E23A2112C00D6C332 /* UIView+GDP.m */; };
+		65B6031F24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6031E24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m */; };
 		65D61A3F2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D61A3E2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m */; };
 		FE5088C220B66D44002E5159 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088C120B66D44002E5159 /* AppDelegate.m */; };
 		FE5088C520B66D44002E5159 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088C420B66D44002E5159 /* ViewController.m */; };
@@ -52,6 +53,8 @@
 		657CE27D23A2112C00D6C332 /* NSDate+GDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+GDP.h"; sourceTree = "<group>"; };
 		657CE27E23A2112C00D6C332 /* UIView+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GDP.m"; sourceTree = "<group>"; };
 		657CE27F23A2112C00D6C332 /* UIView+ScrollToTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ScrollToTop.h"; sourceTree = "<group>"; };
+		65B6031D24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackPopGestureRecognizer.h"; sourceTree = "<group>"; };
+		65B6031E24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackPopGestureRecognizer.m"; sourceTree = "<group>"; };
 		65D61A3D2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalPresentationStyle.h"; sourceTree = "<group>"; };
 		65D61A3E2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalPresentationStyle.m"; sourceTree = "<group>"; };
 		FE5088BD20B66D44002E5159 /* GDPKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDPKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +158,8 @@
 				657CE26D23A2112B00D6C332 /* GDPFileManager.m */,
 				652B4F7C2424B45500C5C007 /* GDP_SMSCodeButton.h */,
 				652B4F7B2424B45500C5C007 /* GDP_SMSCodeButton.m */,
+				65B6031D24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.h */,
+				65B6031E24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m */,
 			);
 			path = GDPKit;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				657CE28923A2112D00D6C332 /* UIView+GDP.m in Sources */,
 				FE99D5BC212BF2C800BE52AA /* UIAlertController+GDP.m in Sources */,
 				657CE28323A2112D00D6C332 /* UILabel+GDP.m in Sources */,
+				65B6031F24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m in Sources */,
 				657CE28123A2112C00D6C332 /* GDPFileManager.m in Sources */,
 				FE5088D020B66D46002E5159 /* main.m in Sources */,
 				FE5088E220B66EF6002E5159 /* UIImage+GDP.m in Sources */,
