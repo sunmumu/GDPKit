@@ -2,6 +2,7 @@
 
 #import "ViewController.h"
 #import "GDPKit.h"
+#import "GDPCornerManager.h"
 
 @interface ViewController ()
 
@@ -15,6 +16,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 50, 100, 100)];
     UIImage *image = [UIImage imageNamed:@"hua"];
     imageView.image = image;
+    [GDPCornerManager setCornerOnUIRectCorner:(UIRectCornerTopLeft|UIRectCornerTopRight) conner:10 view:imageView];
     [self.view addSubview:imageView];
     
     NSString *version = [NSString getAppVersion];

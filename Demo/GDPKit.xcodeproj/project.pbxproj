@@ -19,6 +19,7 @@
 		657CE28923A2112D00D6C332 /* UIView+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE27E23A2112C00D6C332 /* UIView+GDP.m */; };
 		65B6031F24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6031E24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m */; };
 		65D61A3F2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D61A3E2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m */; };
+		65E98FC524EBD54D00CD59E7 /* GDPCornerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E98FC424EBD54D00CD59E7 /* GDPCornerManager.m */; };
 		FE5088C220B66D44002E5159 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088C120B66D44002E5159 /* AppDelegate.m */; };
 		FE5088C520B66D44002E5159 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5088C420B66D44002E5159 /* ViewController.m */; };
 		FE5088C820B66D44002E5159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5088C620B66D44002E5159 /* Main.storyboard */; };
@@ -57,6 +58,8 @@
 		65B6031E24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackPopGestureRecognizer.m"; sourceTree = "<group>"; };
 		65D61A3D2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalPresentationStyle.h"; sourceTree = "<group>"; };
 		65D61A3E2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalPresentationStyle.m"; sourceTree = "<group>"; };
+		65E98FC324EBD54D00CD59E7 /* GDPCornerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDPCornerManager.h; sourceTree = "<group>"; };
+		65E98FC424EBD54D00CD59E7 /* GDPCornerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDPCornerManager.m; sourceTree = "<group>"; };
 		FE5088BD20B66D44002E5159 /* GDPKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDPKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5088C020B66D44002E5159 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE5088C120B66D44002E5159 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				657CE27923A2112C00D6C332 /* UITextField+GDP.m */,
 				657CE27223A2112B00D6C332 /* UIView+GDP.h */,
 				657CE27E23A2112C00D6C332 /* UIView+GDP.m */,
+				65E98FC324EBD54D00CD59E7 /* GDPCornerManager.h */,
+				65E98FC424EBD54D00CD59E7 /* GDPCornerManager.m */,
 				FE5088DA20B66EF6002E5159 /* UIImage+GDP.h */,
 				FE5088DE20B66EF6002E5159 /* UIImage+GDP.m */,
 				657CE27F23A2112C00D6C332 /* UIView+ScrollToTop.h */,
@@ -239,6 +244,7 @@
 				657CE28823A2112D00D6C332 /* UITextField+NumberFormat.m in Sources */,
 				65D61A3F2488BDC400CF4ACC /* UIViewController+ModalPresentationStyle.m in Sources */,
 				FE5088C520B66D44002E5159 /* ViewController.m in Sources */,
+				65E98FC524EBD54D00CD59E7 /* GDPCornerManager.m in Sources */,
 				657CE28923A2112D00D6C332 /* UIView+GDP.m in Sources */,
 				FE99D5BC212BF2C800BE52AA /* UIAlertController+GDP.m in Sources */,
 				657CE28323A2112D00D6C332 /* UILabel+GDP.m in Sources */,

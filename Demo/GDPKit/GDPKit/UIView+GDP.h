@@ -21,8 +21,6 @@
  */
 @property (nonatomic, copy) NSString *timeId;
 
-- (void)setCornerOnTop:(CGFloat)conner;
-
 /// UIView 添加边框线
 /// @param hasTopBorder 顶部边框
 /// @param hasLeftBorder 左边边框
