@@ -16,13 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param tabBar tabBar
 /// @param index 下标
 /// @param count 角标个数
-+ (void)showBadge:(UITabBar *)tabBar index:(int)index WithCount:(NSInteger)count;
++ (void)showBadge:(UITabBar *)tabBar index:(int)index WithCount:(NSInteger)count tabBarCounts:(int)tabBarCounts;
 
 
 /// 显示 角标圆点 指定tabbar
 /// @param tabBar tabBar
 /// @param index 下标
-+ (void)showBadge:(UITabBar *)tabBar index:(int)index;
++ (void)showBadge:(UITabBar *)tabBar index:(int)index tabBarCounts:(int)tabBarCounts;
 
 /// 隐藏角标 指定tabbar
 /// @param tabBar tabBar

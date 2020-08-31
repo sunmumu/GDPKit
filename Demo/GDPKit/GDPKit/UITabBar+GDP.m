@@ -14,7 +14,7 @@
 /// @param tabBar tabBar
 /// @param index 下标
 /// @param count 角标个数
-+ (void)showBadge:(UITabBar *)tabBar index:(int)index WithCount:(NSInteger)count{
++ (void)showBadge:(UITabBar *)tabBar index:(int)index WithCount:(NSInteger)count tabBarCounts:(int)tabBarCounts{
     //移除之前的圆点
     [tabBar removeBadgeOnItemIndex:index];
     
@@ -31,7 +31,7 @@
     CGRect tabFrame = tabBar.frame;
     
     //位置
-    float percentX = (index +0.6) / 4;
+    float percentX = (index +0.6) / tabBarCounts;
     CGFloat x = ceilf(percentX * tabFrame.size.width);
     CGFloat y = ceilf(0.1 * tabFrame.size.height-3);
     badgeView.frame = CGRectMake(x, y, 15, 15);//圆形大小为10
@@ -42,7 +42,7 @@
 /// 显示 角标圆点 指定tabbar
 /// @param tabBar tabBar
 /// @param index 下标
-+ (void)showBadge:(UITabBar *)tabBar index:(int)index {
++ (void)showBadge:(UITabBar *)tabBar index:(int)index tabBarCounts:(int)tabBarCounts{
     //移除之前的圆点
     [tabBar removeBadgeOnItemIndex:index];
     
@@ -59,7 +59,7 @@
     CGRect tabFrame = tabBar.frame;
     
     //位置
-    float percentX = (index +0.6) / 4;
+    float percentX = (index +0.6) / tabBarCounts;
     CGFloat x = ceilf(percentX * tabFrame.size.width);
     CGFloat y = ceilf(0.1 * tabFrame.size.height-3);
     badgeView.frame = CGRectMake(x, y, 7, 7);//圆形大小为10
@@ -69,7 +69,7 @@
 /// 隐藏角标 指定tabbar
 /// @param tabBar tabBar
 /// @param index 下标
-+ (void)hideBadge:(UITabBar *)tabBar index:(int)index{
++ (void)hideBadge:(UITabBar *)tabBar index:(int)index {
     //移除
     [tabBar removeBadgeOnItemIndex:index];
 }
