@@ -3,6 +3,9 @@
 ios项目开发常用方法,整理和封装,例如YYKit框架.
 一直持续整理更新.
 
+## 效果
+![ios项目开发常用方法](https://github.com/sunmumu/GDPKit/blob/master/Demo/%E6%95%88%E6%9E%9C.png?raw=true)
+
 
 ## Use
 法一 cocopods引用
