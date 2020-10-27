@@ -3,7 +3,7 @@
 
 Pod::Spec.new do |s|
   s.name         = 'GDPKit'
-  s.version      = '0.0.3'
+  s.version      = '0.0.4'
   s.summary      = 'A collection of iOS components.'
   s.homepage     = 'https://github.com/sunmumu/GDPKit'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
