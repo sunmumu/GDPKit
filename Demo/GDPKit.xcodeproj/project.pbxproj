@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		652B4F7D2424B45600C5C007 /* GDP_SMSCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 652B4F7B2424B45500C5C007 /* GDP_SMSCodeButton.m */; };
 		657CE28023A2112C00D6C332 /* UIView+ScrollToTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE26C23A2112B00D6C332 /* UIView+ScrollToTop.m */; };
 		657CE28123A2112C00D6C332 /* GDPFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE26D23A2112B00D6C332 /* GDPFileManager.m */; };
 		657CE28223A2112D00D6C332 /* NSDate+GDP.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CE26E23A2112B00D6C332 /* NSDate+GDP.m */; };
@@ -34,8 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		652B4F7B2424B45500C5C007 /* GDP_SMSCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDP_SMSCodeButton.m; sourceTree = "<group>"; };
-		652B4F7C2424B45500C5C007 /* GDP_SMSCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDP_SMSCodeButton.h; sourceTree = "<group>"; };
 		657CE26C23A2112B00D6C332 /* UIView+ScrollToTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ScrollToTop.m"; sourceTree = "<group>"; };
 		657CE26D23A2112B00D6C332 /* GDPFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPFileManager.m; sourceTree = "<group>"; };
 		657CE26E23A2112B00D6C332 /* NSDate+GDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+GDP.m"; sourceTree = "<group>"; };
@@ -161,8 +158,6 @@
 				657CE27C23A2112C00D6C332 /* UITextField+NumberFormat.m */,
 				657CE27723A2112C00D6C332 /* GDPFileManager.h */,
 				657CE26D23A2112B00D6C332 /* GDPFileManager.m */,
-				652B4F7C2424B45500C5C007 /* GDP_SMSCodeButton.h */,
-				652B4F7B2424B45500C5C007 /* GDP_SMSCodeButton.m */,
 				65B6031D24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.h */,
 				65B6031E24B47D4A009F0755 /* UIViewController+BackPopGestureRecognizer.m */,
 			);
@@ -256,7 +251,6 @@
 				657CE28423A2112D00D6C332 /* UITabBar+GDP.m in Sources */,
 				FE5088C220B66D44002E5159 /* AppDelegate.m in Sources */,
 				657CE28023A2112C00D6C332 /* UIView+ScrollToTop.m in Sources */,
-				652B4F7D2424B45600C5C007 /* GDP_SMSCodeButton.m in Sources */,
 				657CE28623A2112D00D6C332 /* UINavigationController+GDP.m in Sources */,
 				FE5088E320B66EF6002E5159 /* UIViewController+GDP.m in Sources */,
 				FE5088E020B66EF6002E5159 /* NSString+GDP.m in Sources */,
