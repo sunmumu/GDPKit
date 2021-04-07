@@ -11,7 +11,7 @@
 
 @implementation UILabel (GDP)
 
-// MARK: - Change 修改
+// MARK: - Change
 /// 文本置顶
 /// @param label label
 + (void)changeTextAlignTop:(UILabel *)label {
@@ -119,7 +119,7 @@
 }
 
 
-// MARK: - Add 添加
+// MARK: - Add 
 /// 字体加粗
 /// @param label label
 /// @param size 加粗大小

@@ -22,7 +22,11 @@
     NSString *version = [NSString getAppVersion];
     NSLog(@"app的版本号是%@", version);
     
-    [imageView addBorderLineWithTop:NO left:NO bottom:YES right:NO borderColor:[UIColor blueColor] withBorderWidth:10];
+//    [imageView addBorderLineWithTop:YES left:YES bottom:YES right:YES borderColor:[UIColor redColor] withBorderWidth:10];
+    [UIView addBorderLine:imageView top:YES left:YES bottom:YES right:YES borderColor:UIColor.redColor withBorderWidth:30];
+    
+    [UIView addDottedLine:imageView dottedWidth:5 dottedSpacing:5 lineColor:UIColor.greenColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {

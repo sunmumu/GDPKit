@@ -8,7 +8,7 @@
 
 @implementation UIViewController (GDP)
 
-// MARK: - Show 显示
+// MARK: - Show 
 /// 显示选择 护照 身份证 驾驶证 弹框 AlertController
 /// @param firstBlock 点击事件回调
 /// @param secondBlock 点击事件回调
