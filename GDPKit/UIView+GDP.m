@@ -11,6 +11,7 @@
 
 @implementation UIView (GDP)
 
+// MARK: - 属性
 - (void)setTimeId:(NSString *)timeId{
     objc_setAssociatedObject(self, @selector(timeId), timeId, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
@@ -178,16 +179,21 @@
     return CGPointMake(CGRectGetWidth(self.bounds) / 2.f, CGRectGetHeight(self.bounds) / 2.f);
 }
 
-#pragma mark - 设置圆角
-- (void)setCornerOnUIRectCorner:(UIRectCorner)uiRectCorner conner:(CGFloat)conner {
+// MARK: - Add
+
+/// view设置指定圆角
+/// @param view 被设置圆角的view
+/// @param uiRectCorner UIRectCorner
+/// @param conner 圆角大小
++ (void)addCorner:(UIView *)view uiRectCorner:(UIRectCorner)uiRectCorner conner:(CGFloat)conner {
     UIBezierPath *maskPath;
-    maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+    maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
                                      byRoundingCorners:uiRectCorner
                                            cornerRadii:CGSizeMake(conner, conner)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.bounds;
+    maskLayer.frame = view.bounds;
     maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
+    view.layer.mask = maskLayer;
 }
 
 /// UIView 添加边框线
@@ -197,10 +203,10 @@
 /// @param hasRightBorder 右边边框
 /// @param borderColor 边框颜色
 /// @param borderWidth 边框宽度
-- (void)addBorderLineWithTop:(BOOL)hasTopBorder left:(BOOL)hasLeftBorder bottom:(BOOL)hasBottomBorder right:(BOOL)hasRightBorder borderColor:(UIColor *)borderColor withBorderWidth:(CGFloat)borderWidth {
++ (void)addBorderLine:(UIView *)view top:(BOOL)hasTopBorder left:(BOOL)hasLeftBorder bottom:(BOOL)hasBottomBorder right:(BOOL)hasRightBorder borderColor:(UIColor *)borderColor withBorderWidth:(CGFloat)borderWidth {
     
-    float height = self.frame.size.height;
-    float width = self.frame.size.width;
+    float height = view.frame.size.height;
+    float width = view.frame.size.width;
     CALayer *topBorder = [CALayer layer];
     topBorder.frame = CGRectMake(0, 0, width, borderWidth);
     topBorder.backgroundColor = borderColor.CGColor;
@@ -215,17 +221,94 @@
     rightBorder.backgroundColor = borderColor.CGColor;
     
     if (hasTopBorder) {
-        [self.layer addSublayer:topBorder];
+        [view.layer addSublayer:topBorder];
     }
     if (hasLeftBorder) {
-        [self.layer addSublayer:leftBorder];
+        [view.layer addSublayer:leftBorder];
     }
     if (hasBottomBorder) {
-        [self.layer addSublayer:bottomBorder];
+        [view.layer addSublayer:bottomBorder];
     }
     if (hasRightBorder) {
-        [self.layer addSublayer:rightBorder];
+        [view.layer addSublayer:rightBorder];
     }
+}
+
+/// 添加虚线
+/// @param view 被添加的view
+/// @param dottedWidth 每个虚线点的宽度
+/// @param dottedSpacing 每个虚线之间的间距
+/// @param lineColor 虚线的颜色
++ (void)addDottedLine:(UIView *)view dottedWidth:(int)dottedWidth dottedSpacing:(int)dottedSpacing lineColor:(UIColor *)lineColor {
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    [shapeLayer setBounds:view.bounds];
+    [shapeLayer setPosition:CGPointMake(CGRectGetWidth(view.frame) / 2, CGRectGetHeight(view.frame))];
+    [shapeLayer setFillColor:[UIColor clearColor].CGColor];
+
+    //  设置虚线颜色lineColor
+    [shapeLayer setStrokeColor:lineColor.CGColor];
+
+    //  设置整个虚线宽度
+    [shapeLayer setLineWidth:CGRectGetHeight(view.frame)];
+    [shapeLayer setLineJoin:kCALineJoinRound];
+
+    //  设置线宽，线间距
+    [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:dottedWidth], [NSNumber numberWithInt:dottedSpacing], nil]];
+
+    //  设置路径
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 0);
+    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(view.frame), 0);
+    [shapeLayer setPath:path];
+    CGPathRelease(path);
+
+    //  把绘制好的虚线添加上来
+    [view.layer addSublayer:shapeLayer];
+}
+
+// MARK: - Get
+/// 获取view的截图 是否圆角 圆角为多大
+/// @param view 被截图的view
+/// @param isCornerRadius 是否圆角
+/// @param cornerRadius 圆角为多大
++ (UIImage *)getViewImage:(UIView *)view isCornerRadius:(BOOL)isCornerRadius cornerRadius:(CGFloat)cornerRadius {
+    view.layer.masksToBounds = YES;
+    if (isCornerRadius) {
+        view.layer.cornerRadius = cornerRadius;
+    } else {
+        view.layer.cornerRadius = 0;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    view.layer.cornerRadius = cornerRadius;
+    
+    return image;
+}
+
+// MARK: - Save
+/// 保存view的截图到相册
+/// @param view 被截图的view
+/// @param isCornerRadius 是否圆角
+/// @param cornerRadius 圆角为多大
++ (void)saveViewImageToPhotoAlbum:(UIView *)view isCornerRadius:(BOOL)isCornerRadius cornerRadius:(CGFloat)cornerRadius {
+    view.layer.masksToBounds = YES;
+    if (isCornerRadius) {
+        view.layer.cornerRadius = cornerRadius;
+    } else {
+        view.layer.cornerRadius = 0;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageWriteToSavedPhotosAlbum(image, view, nil, nil);
+    
+    view.layer.cornerRadius = cornerRadius;
 }
 
 @end

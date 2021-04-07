@@ -10,7 +10,7 @@
 
 @interface UILabel (GDP)
 
-// MARK: - Change 修改
+// MARK: - Change
 /// 文本置顶
 /// @param label label
 + (void)changeTextAlignTop:(UILabel *)label;
@@ -58,7 +58,7 @@
 + (void)changeTextColorAndFontSizeAndAddDeleteLine:(UILabel *)label color:(UIColor *)color font:(CGFloat)fontSize deleteLineColor:(UIColor *)deleteLineColor range:(NSRange)range;
 
 
-// MARK: - Add 添加
+// MARK: - Add
 /// 字体加粗
 /// @param label label
 /// @param size 加粗大小

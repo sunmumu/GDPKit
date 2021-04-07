@@ -13,7 +13,7 @@ typedef void (^StringBlock)(NSString *result);
 
 @interface UIAlertController (GDP)
 
-// MARK: - Show 显示
+// MARK: - Show
 /// 显示 确定 弹框
 /// @param target 执行者
 /// @param title 标题

@@ -7,7 +7,7 @@
 
 @implementation UIImage (GDP)
 
-// MARK: - Change 修改
+// MARK: - Change
 /// 压缩图片 到指定大小容量
 /// @param image image
 /// @param maxLength 指定大小容量
@@ -160,7 +160,7 @@
 }
 
 
-// MARK: - Get 获取
+// MARK: - Get 
 /// 获取 指定URL 下的图片
 /// @param imageUrlStrig 图片URL字符串
 + (UIImage *)getImage:(NSString *)imageUrlStrig {

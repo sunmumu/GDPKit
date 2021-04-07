@@ -10,7 +10,7 @@
 
 @interface NSDate (GDP)
 
-// MARK: - Change 修改
+// MARK: - Change
 /// 日期 转成 星期几
 /// @param date 日期
 + (NSString *)changeDateToWeekDayString:(NSDate*)date;
@@ -19,7 +19,7 @@
 /// @param date 日期
 + (NSString *)changeDateToChatTimeString:(NSDate *)date;
 
-// MARK: - Get 获取
+// MARK: - Get 
 /// 获取现在, N个工作日后的日期
 /// @param day N个工作日
 + (NSString *)getWorkDayStringFromNowAfterNumberDay:(NSInteger)day;
