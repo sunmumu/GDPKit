@@ -103,6 +103,20 @@
     label.attributedText = attr;
 }
 
+/// 修改两处文字颜色 和文字大小
+/// @param label label
+/// @param color 文字颜色
+/// @param font 文字大小
+/// @param range 范围
++ (void)changeTextColorAndFont:(UILabel *)label color:(UIColor *)color font:(UIFont *)font range:(NSRange)range secondColor:(UIColor *)secondColor secondFont:(UIFont *)secondFont secondRange:(NSRange)secondRange {
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:label.text];
+    [attr addAttribute:NSFontAttributeName value:font range:range];
+    [attr addAttribute:NSForegroundColorAttributeName value:color range:range];
+    [attr addAttribute:NSFontAttributeName value:secondFont range:secondRange];
+    [attr addAttribute:NSForegroundColorAttributeName value:secondColor range:secondRange];
+    label.attributedText = attr;
+}
+
 /// 修改文字颜色 文字大小 添加删除线并设置颜色
 /// @param label label
 /// @param color 文字颜色
@@ -117,7 +131,6 @@
     [attr addAttribute:NSStrikethroughColorAttributeName value:deleteLineColor range:range];
     label.attributedText = attr;
 }
-
 
 // MARK: - Add 
 /// 字体加粗

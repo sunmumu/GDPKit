@@ -36,6 +36,13 @@
 /// @param range 范围
 + (void)changeTextColor:(UILabel *)label color:(UIColor *)color range:(NSRange)range;
 
+/// 修改两处文字颜色 和文字大小
+/// @param label label
+/// @param color 文字颜色
+/// @param font 文字大小
+/// @param range 范围
++ (void)changeTextColorAndFont:(UILabel *)label color:(UIColor *)color font:(UIFont *)font range:(NSRange)range secondColor:(UIColor *)secondColor secondFont:(UIFont *)secondFont secondRange:(NSRange)secondRange 
+
 /// 修改文字颜色并添加文字下划线 范围
 /// @param label label
 /// @param color 文字颜色
